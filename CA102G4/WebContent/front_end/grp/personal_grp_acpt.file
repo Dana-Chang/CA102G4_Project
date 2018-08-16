@@ -1,0 +1,36 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+
+	<tbody>
+		<c:if test="${Grp_memVO.grp_Leader == 1 && Grp_memVO.grp_Id.equals(grp_Id) && !(Grp_memVO.mem_Id.equals(memberVO.mem_Id)) }">
+			<tr>
+			<td id="showpic" >
+			<img src='<%=request.getContextPath()%>/front_end/readPic?action=member&id=${Grp_memVO.mem_Id}' id='0'></td>
+			
+			<td>${memberSvc.findByPrimaryKey(Grp_memVO.mem_Id).mem_Name} &nbsp; ${memberSvc.findByPrimaryKey(Grp_memVO.mem_Id).mem_Sex == 1 ? "<i class='fas fa-male' style='color:#4E9EE2'></i>" : "<i class='fas fa-female' style='color:#EC7555'></i>"}</td>	
+			
+			<td>${memberSvc.findByPrimaryKey(Grp_memVO.mem_Id).mem_Phone}</td>
+			
+		<td>
+		 	<c:choose>
+			<c:when test="${grp_allSvc.findByPrimaryKey(grp_Id).grp_Status == 1}">                
+			<form action="<%= request.getContextPath()%>/grp_mem.do" method="post">
+				<input type="hidden" name="grp_Id" value="${grp_Id}">
+				<input type="hidden" name="mem_Id" value="${Grp_memVO.mem_Id}">
+				<input type="hidden" name="grp_Leader" value="0">
+				<input type="hidden" name="action" value="update">				
+				<button type="submit" class="btn btn-primary" >
+					<i class="fas fa-edit"></i>取消接受
+				</button>
+			</form>
+			</c:when>
+			<c:otherwise>
+				<button type="submit" class="btn btn-success" disabled>
+					<i class="fas fa-check"></i>已經出發囉
+				</button>
+			</c:otherwise>  
+			</c:choose>
+		</td>
+		</tr>
+		</c:if>
+</tbody>

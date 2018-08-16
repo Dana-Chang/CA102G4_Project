@@ -1,0 +1,57 @@
+/* .text-truncate { */
+/*     overflow: hidden; */
+/*     text-overflow: ellipsis; */
+/*     white-space: nowrap; */
+/* } */
+
+.table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.time {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.content {
+    line-height: 2.28em;
+}
+.join {
+    margin: 0 4px;
+    color: #d2d2d2;
+}
+.fas.fa-map-marker-alt {
+    margin: 0 4px;
+}
+
+.fa-map-marker-alt:before {
+    margin-right: 5px;
+}
+
+.fas.fa-map-marker-alt+p {
+    display: inline;
+    margin-left: 4px;
+}
+.searchContent {
+    table-layout: fixed;
+    width: 100%;
+}
+.ui.borderless.menu {
+	text-align:center;
+	width :40%;
+	margin :0 auto ;
+	font-size: 1.2em;
+}
+.ui.borderless.menu .item {
+	margin:0 auto !important;
+	padding: unset !important;
+}
+.page_info {
+	text-align:center;
+	margin-top:5px;
+}
+.attractionsArea {
+	display:inline;
+	margin-left:20px;
+}

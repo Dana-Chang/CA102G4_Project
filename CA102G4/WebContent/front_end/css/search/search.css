@@ -1,0 +1,266 @@
+html {
+    height: 100%;
+}
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.footer {
+    box-sizing: border-box;
+    bottom: 0px;
+    width: 100%;
+}
+#container {
+    flex: 1;
+}
+.poi_results .cards {
+    flex-wrap: nowrap;
+    padding: .3em;
+    height: 230px;
+}
+.poi_results .cards .card {
+    width: 27.5%;
+    height: 90%;
+}
+.ui.cards > .card {
+    display: flex;
+    margin: .875em .5em;
+    float: none;
+}
+.ui.card,
+.ui.cards > .card {
+    max-width: 100%;
+    position: relative;
+    flex-direction: column;
+    border: none;
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    transition: box-shadow .1s ease, transform .1s ease, -webkit-transform .1s ease;
+}
+.swiper-slide {
+    flex-shrink: 0;
+}
+*,
+:after,
+:before {
+    box-sizing: inherit;
+}
+.swiper-container {
+    overflow: hidden;
+}
+@media (min-width:768px) {
+    .results {
+        width: 62.5%;
+    }
+}
+@media (min-width:768px) {
+    .column.area_result.center.aligned {
+        width: 37.5%;
+    }
+}
+.poi_results .cards > .card > .meta {
+    padding: .2em;
+    text-align: center;
+}
+.swiper-container-free-mode > .swiper-wrapper {
+    transition-timing-function: ease-out;
+    margin: 0 auto;
+}
+.cards .card .image {
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    height: 120px;
+}
+.ui.cards > .card > .name.content {
+    flex-grow: 1;
+    padding: .5em !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+.ui.cards > .card > .name.content .header {
+    word-break: break-all;
+}
+.swiper-wrapper.ui.cards a:hover,
+.swiper-wrapper.ui.cards a:focus {
+    text-decoration: none;
+}
+.button-next.active,
+.button-prev.active {
+    display: block;
+}
+.poi_results .button-next,
+.member_result .button-next,
+.fa-chevron-right {
+    position: absolute;
+    right: 2rem;
+    top: 45%;
+    margin-top: -.5em;
+    z-index: 10;
+    cursor: pointer;
+}
+.poi_results .button-prev,
+.member_result .button-prev,
+.fa-chevron-left {
+    position: absolute;
+    left: 2rem;
+    top: 45%;
+    margin-top: -.5em;
+    z-index: 10;
+    cursor: pointer;
+}
+.fa-chevron-right,
+.fa-chevron-left {
+    display: inline-block;
+    opacity: 1;
+    margin: 0 .25rem 0 0;
+    width: 1.18em;
+    height: 1em;
+    font-style: normal;
+    text-decoration: inherit;
+    text-align: center;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    backface-visibility;
+    hidden;
+    color: red;
+}
+.poi_results.swiper-container.swiper-container-horizontal.swiper-container-free-mode {
+    position: relative;
+    overflow: hidden;
+}
+.row.mob-col-rev {
+    display: flex;
+}
+.raised.card.swiper-slide {
+    width: 190px !important;
+    height: 198px !important;
+    margin-right: 10px;
+    color: red;
+}
+.ui.grid > .row {
+    position: relative;
+    display: flex;
+    width: 100% !important;
+    padding: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.image {
+    height: 100%;
+    width: 100%;
+    transition: all 1.2s ease;
+}
+a:hover .image {
+    transform: scale(1.1);
+}
+.raised.card.swiper-slide {
+    overflow: hidden;
+}
+.calendar::before,
+.user::before {
+    margin-right: 5px
+}
+.extra > a:hover {
+    color: red;
+    text-decoration: none;
+}
+.title {
+    color: #1e70bf !important;
+}
+.title:hover {
+    color: red !important;
+}
+.swiper-button-disabled {
+    opacity: .35;
+}
+.swiper-container2 {
+    width: 300px;
+    margin: 0 auto;
+}
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+}
+.column.results {
+    padding-right: 14px;
+}
+.column.area_result.center.aligned {
+    padding-left: 14px;
+}
+.userImage {
+    width: 300px;
+    height: 300px;
+    background-size: cover;
+    border-radius: .28571429rem .28571429rem 0 0!important
+}
+.userInfo {
+    width: auto;
+    height: auto;
+    padding: 1em 1em;
+    border-radius: 0 0 .28571429rem .28571429rem!important;
+}
+
+.userInfoHeader {
+    font-size: 700px;
+    font-size: 1.28571429em;
+    color: rgba(0,0,0,.85);
+    line-height: 1.28571429em;
+}
+
+.swiperCard {
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    margin-bottom: 30px;
+    margin-top: 1em;
+}
+
+.swiperCard:hover {
+    text-decoration: none;
+}
+
+.userSwiper-wrapper {
+    border-radius: .28571429rem;
+}
+
+.userInfoJoindate {
+    color: rgba(0,0,0,.4);
+    font-size: 14px;
+}
+
+.userInfoDescription {
+    font-size: 16px;
+    color: rgba(0,0,0,.68);
+    margin-top: 8px;
+}
+.swiper-pagination {
+    bottom: 125px !important;
+}
+.ui.header.title,
+.ui.fluid.action.input > input {
+    font-family: 'Oswald', 'Noto Sans TC', sans-serif !important;
+}
+.userExtra {
+    color: rgba(0,0,0,.4);
+    padding: .75em 1em;
+    border-top: 1px solid rgba(0,0,0,.05)!important;
+    position:absolute;
+    bottom:0;
+}
+.userIcon {
+    margin-right: 3.5px;
+}
+
+.swiper-wrapper.userSwiper-wrapper, {
+    transition-property: none;
+}
+.swiper-slide.swiperCard {
+    transition-property: none;
+}
+
+
+
+
+

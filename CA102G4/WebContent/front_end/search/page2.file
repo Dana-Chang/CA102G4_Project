@@ -1,0 +1,99 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+	<div class="ui borderless menu">
+		<%if(pageNumber<=6){%>
+		
+			<%for(int i = 1;i<paramWhichPage;i++){%>
+				<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=<%=i%>"><%=i%></a>
+			<%}%>
+			
+				<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=<%=whichPage%>" style="color:royalblue !important"><%=whichPage%></a>
+				
+			<%for(int i = paramWhichPage+1;i<=pageNumber;i++){%>
+				<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=<%=i%>"><%=i%></a>
+			<%}%>
+			
+		<%}else if(pageNumber>6){%>
+			
+			<%if(paramWhichPage<=1){%>
+			
+				<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=1" style="color:royalblue !important">1</a>
+				
+				<%for(int i = 1;i<=4;i++){%>
+					<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=<%=i+1%>"><%=i+1%></a>
+				<%}%>
+					<p class="item">...</p>
+					<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=<%=pageNumber%>"><%=pageNumber%></a>
+							
+			<%}else if(paramWhichPage>=pageNumber){%>
+			
+				<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=1">1</a>
+				<p class="item">...</p>
+				<%for(int i = pageNumber-4;i<pageNumber;i++){%>
+					<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=<%=i%>"><%=i%></a>
+				<%}%>
+				
+				<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=<%=pageNumber%>" style="color:royalblue !important"><%=pageNumber%></a>
+				
+			<%}else{%>
+			
+				<%if((paramWhichPage>=4) && ((paramWhichPage+3)<=pageNumber)){%>
+				
+					<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=<%=1%>"><%=1%></a>
+					<p class="item">...</p>
+					
+						<%for(int i = paramWhichPage-2;i<paramWhichPage;i++){%>
+							<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=<%=i%>"><%=i%></a>
+						<%}%>
+						
+						<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=<%=paramWhichPage%>" style="color:royalblue !important"><%=paramWhichPage%></a>
+						
+						<%for(int i = paramWhichPage+1;i<paramWhichPage+3;i++){%>
+							<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=<%=i%>"><%=i%></a>
+						<%}%>
+						
+					<p class="item">...</p>
+					<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=<%=pageNumber%>"><%=pageNumber%></a>
+				
+				<%}%>
+				
+								
+				<%if((paramWhichPage<4 || (paramWhichPage+3)>pageNumber)){%>
+					<%if(paramWhichPage<4){%>
+						<%int remain = 5;%>
+						<%for(int i = 1;i<paramWhichPage;i++){%>
+							<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=<%=i%>"><%=i%></a>
+							<%remain--;%>
+						<%}%>
+						
+						<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=<%=paramWhichPage%>" style="color:royalblue !important"><%=paramWhichPage%></a>
+						
+						<%for(int i = 1;i<remain;i++){%>
+							<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=<%=paramWhichPage+i%>"><%=paramWhichPage+i%></a>
+						<%}%>
+						
+						<p class="item">...</p>
+						<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=<%=pageNumber%>"><%=pageNumber%></a>
+					
+					<%}if((paramWhichPage+4)>pageNumber){%>
+						<%int tem = pageNumber-4;%>
+						<%int remain = paramWhichPage-tem;%>
+						<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=1">1</a>
+						<p class="item">...</p>
+						
+						<%for(int i = 0;i<remain;i++){%>
+							<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=<%=paramWhichPage-remain+i%>"><%=paramWhichPage-remain+i%></a>
+						<%}%>
+						
+						<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=<%=paramWhichPage%>" style="color:royalblue !important"><%=paramWhichPage%></a>
+						
+						
+						<%for(int i = paramWhichPage+1;i<=pageNumber;i++){%>
+							<a class="item" href="<%=request.getContextPath()%>/blog.do?action=${param.action}&keyword=${param.keyword}&whichPage=<%=i%>"><%=i%></a>
+						<%}%>
+						
+					<%}%>
+				<%}%>
+			<%}%>
+		<%}%>
+	</div>

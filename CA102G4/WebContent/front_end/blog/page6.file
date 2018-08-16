@@ -1,0 +1,32 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+    <%if(whichPage-1 <= 0){%>
+        <div class="ui buttons">
+             <button class="ui labeled icon button disabled" onclick="location.href='<%=request.getContextPath()%>/blog.do?action=${param.action}&mem_id=${memberVO.mem_Id}&whichPage=<%=whichPage-1%>'">
+                 <i class="left chevron icon"></i> 上一頁
+             </button>
+        </div>
+    <%}else{%>
+    	<div class="ui buttons">
+    		<button class="ui labeled icon button" onclick="location.href='<%=request.getContextPath()%>/blog.do?action=${param.action}&mem_id=${memberVO.mem_Id}&whichPage=<%=whichPage-1%>'">
+    			<i class="left chevron icon"></i>
+    			上一頁
+    		</button>
+    	</div>
+    	<%}%>
+
+    <%if(pageIndex>=pageIndexArray[pageNumber-1]){%>
+         <div class="ui buttons">
+         	<button class="ui right labeled icon button disabled" onclick='<%=request.getContextPath()%>/blog.do?action=${param.action}&mem_id=${memberVO.mem_Id}&whichPage=<%=whichPage+1%>'">
+         		下一頁
+         		<i class="right chevron icon"></i>
+         	</button>
+         </div>
+    <%}else{%>
+    	<div class="ui buttons">
+    		<button class="ui right labeled icon button" onclick="location.href='<%=request.getContextPath()%>/blog.do?action=${param.action}&mem_id=${memberVO.mem_Id}&whichPage=<%=whichPage+1%>'">
+    		下一頁
+    		<i class="right chevron icon"></i>
+    		</button>
+    	</div>
+     	<%}%>

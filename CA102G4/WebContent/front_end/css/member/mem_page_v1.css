@@ -1,0 +1,1001 @@
+
+/*sidebr 設定*/
+
+.sidebr-all{
+    top: 110px;
+    position:absolute;
+    margin-left: 120px;
+    width: 220px;
+    height: 300px;
+    
+}
+.navbar-fixed-left{
+    width: 180px;
+    margin-left:70px ;
+}
+
+/*sidebr context 設定*/
+
+body #dropdown_a1{
+   color:#fff ;
+   font-size: 20px;
+   line-height: 60px; 
+}
+
+/*側邊欄選單設定*/
+
+.dropdown {
+    
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 50px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    
+}
+
+#sidebar.active ul li a {
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 1em;
+    max-height: 70px;
+}
+
+#sidebar.active ul li a i {
+    margin-right: 0;
+    display: block;
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+#sidebar.active ul ul a {
+    padding: 15px !important;
+}
+
+#sidebar.active .dropdown-toggle::after {
+    top: auto;
+    bottom: 1px;
+    right: 50%;
+    -webkit-transform: translateX(50%);
+    -ms-transform: translateX(50%);
+    transform: translateX(50%);
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+}
+
+#sidebar.active ul li a {
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 1em;
+    max-height: 70px;
+}
+
+#sidebar.active {
+    min-width: 130px;
+    max-width: 80px;
+    text-align: center;
+}
+
+/*側邊欄選單的hover設定*/
+#dropdown_a1:hover {
+    color: #fd5c63;
+    transition-duration:0.5s;
+}
+#dropdown_a1{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/*側邊欄子選單的設定*/
+
+.dropdown-menu{
+    background-color:transparent;
+}
+
+#dropdown_a2:hover { 
+    color: #fd5c63;
+    transition-duration:0.5s;
+}
+#dropdown_a2{
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.dropdown-menu>li>a {
+    color:white;
+}
+
+#sidebar ul li a {
+    text-align: left;
+}
+
+/*側邊欄子選單項目設定*/
+
+/*我的帳戶*/
+#auth_Account {
+    min-width:10px;
+    margin-top:10px; 
+    margin-left: -15px;
+}
+/*我的交易*/
+#auth_Transaction {
+    min-width:10px;
+    margin-top:10px; 
+    margin-left: -15px; 
+}
+/*我的行程*/
+#auth_TRIP{
+    min-width:10px;
+    margin-top:10px; 
+    margin-left: -15px;
+}
+/*我的揪團*/
+#auth_GROUP{
+    min-width:10px;
+    margin-top:10px; 
+    margin-left: -15px;
+}
+/*我的好友*/
+#auth_FRIEND{
+    min-width:10px;
+    margin-top:10px; 
+    margin-left: -15px;
+}
+/*我的旅遊記*/
+#auth_BLOG{
+    min-width:10px;
+    margin-top:10px; 
+    margin-left: -15px;
+}
+/*我的問答*/
+#auth_QUESTION{
+    min-width:10px;
+    margin-top:10px; 
+    margin-left: -15px;
+}
+/*我的聊天*/
+#auth_CHAT{
+    min-width:10px;
+    margin-top:10px; 
+    margin-left: -15px;
+}
+
+/*我的通知*/
+#auth_Notice{
+    min-width:10px;
+    margin-top:10px; 
+    margin-left: -15px;
+}
+
+
+/*子選單小箭頭*/
+.dropdown-toggle::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.6em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+}
+
+ul ul a {
+    font-size: 1em !important;
+    padding-left: 30px !important;
+    background: black;
+    color: aliceblue;
+    
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: #fff !important;
+    color: #7386D5;
+}
+
+a.article,
+a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+}
+
+/*子選單設定*/
+.navbar-fixed-left .dropdown .dropdown-menu{
+    left:100%;
+    right:auto;
+    border-radius:0 3px 3px 0;
+    top:0;
+
+}
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+    #sidebar {
+        min-width: 80px;
+        max-width: 80px;
+        text-align: center;
+        margin-left: -80px !important;
+    }
+    .dropdown-toggle::after {
+        top: auto;
+        bottom: 10px;
+        right: 50%;
+        -webkit-transform: translateX(50%);
+        -ms-transform: translateX(50%);
+        transform: translateX(50%);
+    }
+    #sidebar.active {
+        margin-left: 0 !important;
+    }
+    #sidebar .sidebar-header h3,
+    #sidebar .CTAs {
+        display: none;
+    }
+    #sidebar .sidebar-header strong {
+        display: block;
+    }
+    #sidebar ul li a {
+        padding: 20px 10px;
+    }
+    #sidebar ul li a span {
+        font-size: 0.85em;
+    }
+    #sidebar ul li a i {
+        margin-right: 0;
+        display: block;
+    }
+    #sidebar ul ul a {
+        padding: 10px !important;
+    }
+    #sidebar ul li a i {
+        font-size: 1.3em;
+    }
+    #sidebar {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+}
+
+#showpic > img,td>img{
+	width:50%;
+	height:50%;
+	border-radius: 50%;
+    align-items: center;
+    margin: 0px auto;
+    background-position: center;
+	}
+
+/*避免側邊欄的子選單被蓋掉*/
+.row > .col-lg-12,
+.row > .col-lg-3,
+.row > .col-md-6,
+.row > .col-xs-3,
+.row > .col-xs-9{
+    position:static;
+}
+
+.has_children{ 
+    cursor:pointer; width:150px;
+}
+.highlight{
+    background:none;
+
+}
+/*選單a項目*/
+#dropdown_item{
+    text-decoration:none;
+    display:none;
+    width:300px;
+    float:left;
+    font-size: 15px;
+    line-height: 18px;
+    color:white;
+    margin-left: 25px;
+    
+}
+
+body > div.banner.about-bg > div.item_context > div{
+        height: 60px;
+}
+
+#dropdown_item:hover{
+    
+    color:#fd5c63;
+    transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:5s all;
+	-o-transition:5 all;
+	-ms-transition:5s all;
+    
+}
+
+/*選單li項目 行距 icon*/
+body > div.sidebar > div > li{
+    
+    list-style-type:none;
+    list-style-image: url(images/icon.gif);
+    line-height: 2px;　
+    
+    
+}
+
+/*選單li項目hover */
+li:hover{
+    
+    color:#fd5c63;
+    transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+
+}
+
+/*選單li項目*/
+
+.sidebar_menu{
+    width: 150px;
+    margin-left: 100px;
+    border-left-width: 70px;
+    padding-left: 50px;
+    margin-top: 50px;
+    border-bottom-width: 50px;
+    margin-bottom: 50px;
+    list-style-type:none;
+    line-height: 50px;
+    color:white;
+    display:inline;
+    float:left;
+    font-size: 16px;
+    font-family: 'Oswald','Noto Sans TC', sans-serif !important;
+}
+
+/*選單項目a點擊後的頁面內容*/
+
+.item_context{
+    background-color: #f5f5f5;
+    width: 850px;
+    height:500px;   
+    margin-bottom: 300px;
+    display:inline;
+    float:right;
+    margin-right: 150px;
+    margin-top: 50px;
+    position: absolute;
+    border-left-width: 30px;
+    margin-left: 80px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    font-family: 'Oswald','Noto Sans TC', sans-serif !important;  
+}
+
+#label_setting{
+    margin-top: 50px;
+    width: 200px;
+}
+#label_setting_1{
+    margin-top: 10px;
+    width: 200px;
+}
+
+
+/* 我的檔案 左邊 編輯區塊*/
+
+.my_account_selet_header{
+    height:60px;
+}
+
+.my_account_profile{
+    height: 350px;
+    display: inline-block;
+    width: 800px;
+}
+.my_account_profile_left{
+    width: 450px;
+    height: 370px;
+     display: inline-block;
+}
+
+.my_account_selet_header_title{
+    font-weight: 500px;
+    color:black;
+    font-size: 18px;
+}
+.my_account_selet_header_title_subtitle{
+    color:black;
+}
+
+.hr_setting_left{
+    border-top:1px dotted #c2c2c2;
+     
+/*  姓名、性別、生日 字型設計  */
+}
+#label_setting_1 > label{
+    font-weight: 400;
+    font-family: 'Oswald','Noto Sans TC', sans-serif !important; 
+}
+#label_setting > label{
+    font-weight: 400;
+    font-family: 'Oswald','Noto Sans TC', sans-serif !important; 
+}
+body > div.banner.about-bg > div.item_context > div > div.my_account_profile > div.my_account_profile_left > div.input-with-label_birthday > label{
+    font-weight: 400;
+    font-family: 'Oswald','Noto Sans TC', sans-serif !important; 
+}
+/*  //姓名、性別、生日 字型設計  */
+
+.input-with-label_label{
+    width: 200px;
+    height: 20px;
+    color:black;
+    text-align: right;
+    font-family: 'Oswald','Noto Sans TC', sans-serif !important;
+    
+}
+.input-with-label_content{
+    padding-left:20px;
+    width: 150px;
+    height: 40px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+.my-account_input-text{
+    display: flex;
+    align-items: center;
+}
+
+
+/*放盒子的地方*/
+.stardust-input{
+    width: 150px;
+    height: 40px;
+    float:left;
+}
+
+/*盒子*/
+.stardust-input_element_my-account_full-input{
+    height: 40px;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 2px 0px 0px inset;
+    font-size: 14px;
+    background: none;
+    padding: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.14);
+    border-image: initial;
+    transition: border-color 0.1s ease;
+    border-radius: 2px;
+    font-weight: 300;
+}
+#label_setting > div > input{
+    background-color: white;
+
+}
+
+#label_setting_1 > div > input{
+    background-color: white;
+}
+
+
+/*生日盒子*/
+
+.input-with-label_birthday{
+    display: inline-block;
+    width: 400px;
+    margin-left: 15px;
+    margin-top: 30px;
+    color:black;
+    font-family: "Helvetica Neue", Helvetica, Arial, "\\6587泉驛正黑", "WenQuanYi Zen Hei", "Hiragino Sans GB", "\\5137黑Pro", "LiHei Pro", "Heiti TC", "\\5FAE軟正黑體", "Microsoft JhengHei UI", "Microsoft JhengHei", sans-serif;
+    
+}
+
+.input-with-label_content_birthday{
+    display: inline-block;
+    width: 300px;
+    margin-left: 18px;
+}
+
+
+
+/*變更按鈕*/
+.my-account_no-background-button{
+    width: 44px;
+    height: 23px;
+    margin-left: 150px;
+    color: rgb(0, 85, 170);
+    font-size: 13px;
+    text-transform: capitalize;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    outline: none;
+    background: none; 
+}
+
+.btn_sex_man{
+    display: inline-block;
+    margin-right: 40px;
+    font-weight: 400;
+    font-family: 'Oswald','Noto Sans TC', sans-serif !important;
+}
+
+.btn_sex_woman{
+    display: inline-block;
+    margin-right: 30px;
+    font-weight: 400;
+    font-family: 'Oswald','Noto Sans TC', sans-serif !important;
+}
+
+#btn-sumbit_setting{
+display: inline-block;
+    width: 131px;
+    height: 35px;
+    margin-top: 0px;
+    border-top-width: 20px;
+}
+
+.btn-sumbit{
+    margin-left: 75px;
+    margin-top: 30px;
+    width: 56px;
+    height: 35px;
+}
+/*垂直線設定*/
+.vr_line{
+    border-left: 1px dotted #c2c2c2;
+    margin-bottom: 50px;
+    width: 1px;
+    height: 350px;
+    margin-left: 0px;
+    float:right;
+    right: 0;
+    margin-right: 30px;
+    
+}
+body > div.banner.about-bg > div.item_context > div > div.my_account_profile > div.my_account_profile_left > div:nth-child(6){
+    width: 1px;
+    float: right;
+    margin-top: -250px;
+    
+}
+
+/* //我的檔案 左邊 編輯區塊*/
+
+/*我的檔案 右邊邊 編輯區塊*/
+.my_account_profile_right{
+	float:right;
+    width: 300px;
+    height: 370px;
+    margin-top: 0px;
+    Display:inline-block;
+    align-items:center;
+}
+
+.avatar-uploader{
+    height: 350px;
+    margin:0px auto;
+    margin-left: 30px
+}
+
+.avatar-uploader_avatar{
+    border-radius:50%;
+    align-items:center;
+    margin:0px auto;
+    background-position:center;
+}
+
+.avatar-uploader_avatar-image{
+    height: 100px;
+    align-items:center;
+    margin:0px auto;
+}
+
+
+.avatar-uploader_file-input{
+    
+    margin:0px auto;
+    align-items:center;
+    display:none;
+}
+
+.btn_btn-light_btn-m_btn-inline{
+    margin-left: 110px;
+    height: 40px;
+    margin-top: 30px;
+}
+
+.avatar-uploader__text-container{
+    margin-left: 80px;
+}
+
+.avatar-uploader__text{
+    width: 200px;
+    height: 100px;
+    
+    align-items:center;
+    line-height: 30px;
+}
+
+
+.has_children{ 
+    cursor:pointer; width:150px;
+}
+.highlight{
+    background:none;
+
+}
+/*選單a項目*/
+#dropdown_item{
+    text-decoration:none;
+    display:none;
+    width:300px;
+    float:left;
+    font-size: 15px;
+    line-height: 18px;
+    color:white;
+    margin-left: 25px;
+    
+}
+
+body > div.banner.about-bg > div.item_context > div{
+        height: 60px;
+}
+
+#dropdown_item:hover{
+    
+    color:#fd5c63;
+    transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:5s all;
+	-o-transition:5 all;
+	-ms-transition:5s all;
+    
+}
+
+/*選單li項目 行距 icon*/
+body > div.sidebar > div > li{
+    
+    list-style-type:none;
+    list-style-image: url(images/icon.gif);
+    line-height: 2px;　
+    
+    
+}
+
+/*選單li項目hover */
+li:hover{
+    
+    color:#fd5c63;
+    transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+
+}
+
+/*選單li項目*/
+
+.sidebar_menu{
+    width: 150px;
+    margin-left: 100px;
+    border-left-width: 70px;
+    padding-left: 50px;
+    margin-top: 50px;
+    border-bottom-width: 50px;
+    margin-bottom: 50px;
+    list-style-type:none;
+    line-height: 50px;
+    color:white;
+    display:inline;
+    float:left;
+    font-size: 16px;
+    font-family: 'Oswald','Noto Sans TC', sans-serif !important;
+}
+
+/*選單項目a點擊後的頁面內容*/
+
+.item_context{
+    background-color: #f5f5f5;
+    width: 850px;
+    height:500px;   
+    margin-bottom: 300px;
+    display:inline;
+    float:right;
+    margin-right: 150px;
+    margin-top: 50px;
+    position: absolute;
+    border-left-width: 30px;
+    margin-left: 80px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    font-family: 'Oswald','Noto Sans TC', sans-serif !important;  
+}
+
+#label_setting{
+    margin-top: 50px;
+    width: 200px;
+}
+#label_setting_1{
+    margin-top: 10px;
+    width: 200px;
+}
+
+
+/* 我的檔案 左邊 編輯區塊*/
+
+.my_account_selet_header{
+    height:60px;
+}
+
+.my_account_profile{
+    height: 350px;
+    display: inline-block;
+    width: 800px;
+}
+.my_account_profile_left{
+    width: 450px;
+    height: 370px;
+     display: inline-block;
+}
+
+.my_account_selet_header_title{
+    font-weight: 500px;
+    color:black;
+    font-size: 18px;
+}
+.my_account_selet_header_title_subtitle{
+    color:black;
+}
+
+.hr_setting_left{
+    border-top:1px dotted #c2c2c2;
+     
+/*  姓名、性別、生日 字型設計  */
+}
+#label_setting_1 > label{
+    font-weight: 400;
+    font-family: 'Oswald','Noto Sans TC', sans-serif !important; 
+}
+#label_setting > label{
+    font-weight: 400;
+    font-family: 'Oswald','Noto Sans TC', sans-serif !important; 
+}
+body > div.banner.about-bg > div.item_context > div > div.my_account_profile > div.my_account_profile_left > div.input-with-label_birthday > label{
+    font-weight: 400;
+    font-family: 'Oswald','Noto Sans TC', sans-serif !important; 
+}
+/*  //姓名、性別、生日 字型設計  */
+
+.input-with-label_label{
+    width: 200px;
+    height: 20px;
+    color:black;
+    text-align: right;
+    font-family: 'Oswald','Noto Sans TC', sans-serif !important;
+    
+}
+.input-with-label_content{
+    padding-left:20px;
+    width: 150px;
+    height: 40px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+.my-account_input-text{
+    display: flex;
+    align-items: center;
+}
+
+
+/*放盒子的地方*/
+.stardust-input{
+    width: 150px;
+    height: 40px;
+    float:left;
+}
+
+/*盒子*/
+.stardust-input_element_my-account_full-input{
+    height: 40px;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 2px 0px 0px inset;
+    font-size: 14px;
+    background: none;
+    padding: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.14);
+    border-image: initial;
+    transition: border-color 0.1s ease;
+    border-radius: 2px;
+    font-weight: 300;
+}
+#label_setting > div > input{
+    background-color: white;
+
+}
+
+#label_setting_1 > div > input{
+    background-color: white;
+}
+
+
+/*生日盒子*/
+
+.input-with-label_birthday{
+    display: inline-block;
+    width: 400px;
+    margin-left: 15px;
+    margin-top: 30px;
+    color:black;
+    font-family: "Helvetica Neue", Helvetica, Arial, "\\6587泉驛正黑", "WenQuanYi Zen Hei", "Hiragino Sans GB", "\\5137黑Pro", "LiHei Pro", "Heiti TC", "\\5FAE軟正黑體", "Microsoft JhengHei UI", "Microsoft JhengHei", sans-serif;
+    
+}
+
+.input-with-label_content_birthday{
+    display: inline-block;
+    width: 300px;
+    margin-left: 18px;
+}
+
+
+
+/*變更按鈕*/
+.my-account_no-background-button{
+    width: 44px;
+    height: 23px;
+    margin-left: 150px;
+    color: rgb(0, 85, 170);
+    font-size: 13px;
+    text-transform: capitalize;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    outline: none;
+    background: none; 
+}
+
+.btn_sex_man{
+    display: inline-block;
+    margin-right: 40px;
+    font-weight: 400;
+    font-family: 'Oswald','Noto Sans TC', sans-serif !important;
+}
+
+.btn_sex_woman{
+    display: inline-block;
+    margin-right: 30px;
+    font-weight: 400;
+    font-family: 'Oswald','Noto Sans TC', sans-serif !important;
+}
+
+#btn-sumbit_setting{
+display: inline-block;
+    width: 131px;
+    height: 35px;
+    margin-top: 0px;
+    border-top-width: 20px;
+}
+
+.btn-sumbit{
+    margin-left: 75px;
+    margin-top: 30px;
+    width: 56px;
+    height: 35px;
+}
+/*垂直線設定*/
+.vr_line{
+    border-left: 1px dotted #c2c2c2;
+    margin-bottom: 50px;
+    width: 1px;
+    height: 350px;
+    margin-left: 0px;
+    float:right;
+    right: 0;
+    margin-right: 30px;
+    
+}
+body > div.banner.about-bg > div.item_context > div > div.my_account_profile > div.my_account_profile_left > div:nth-child(6){
+    width: 1px;
+    float: right;
+    margin-top: -250px;
+    
+}
+
+/* //我的檔案 左邊 編輯區塊*/
+
+/*我的檔案 右邊邊 編輯區塊*/
+.my_account_profile_right{
+	float:right;
+    width: 300px;
+    height: 370px;
+    margin-top: 0px;
+    Display:inline-block;
+    align-items:center;
+}
+
+.avatar-uploader{
+    height: 350px;
+    margin:0px auto;
+    margin-left: 30px
+}
+
+.avatar-uploader_avatar{
+    border-radius:50%;
+    align-items:center;
+    margin:0px auto;
+    background-position:center;
+}
+
+.avatar-uploader_avatar-image{
+    height: 200px;
+    align-items:center;
+    margin:0px auto;
+}
+
+
+.avatar-uploader_file-input{
+    
+    margin:0px auto;
+    align-items:center;
+    display:none;
+}
+
+.btn_btn-light_btn-m_btn-inline{
+    margin-left: 110px;
+    height: 40px;
+    margin-top: 30px;
+}
+
+.avatar-uploader__text-container{
+    margin-left: 80px;
+}
+
+.avatar-uploader__text{
+    width: 200px;
+    height: 100px;
+    align-items:center;
+    line-height: 30px;
+}
+
+

@@ -1,0 +1,71 @@
+.blog_id, .mem_id, .mem_name, .br_reason, .br_time, .br_status {
+	color: #333;
+	font-weight: unset !important;
+	font-size: 1.5em;
+}
+
+.ui.menu {
+	font-size: 2em !important;
+	width: 40%;
+	margin: 0 auto !important;
+	font-family:'Oswald','Noto Sans TC', sans-serif;
+}
+
+a.item {
+	text-align: center;
+	margin: 0 auto;
+	padding: unset !important;
+}
+
+.bmr_status, .message_id, .mem_id, .mem_name, .bmr_reason, .bmr_time,
+	.bmr_status, .blog_message {
+	color: #333;
+	font-weight: unset !important;
+	font-size: 1.5em;
+}
+
+p.item {
+	height: 55px;
+}
+
+.blogReportManageContent {
+	margin: 1em;
+	height: 100%;
+}
+
+.blogReportManageDialogForm, .ui-widget {
+	font-family: 'Oswald', 'Noto Sans TC', sans-serif !important;
+}
+
+.blogReportManageDialogForm {
+	height: 100%;
+}
+
+.blogMessageReportDialogContentMessageID,
+	.blogMessageReportDialogContentMemID,
+	.blogMessageReportDialogContentBmrStatus,
+	.blogMessageReportDialogContentBmrReason, .blogReportManageContent {
+	font-size: 1em;
+}
+
+.blogReportManageTitle {
+	font-size: 1.5em;
+}
+
+.ui.selection.dropdown, .blogReportManageTitle {
+	margin: .5em;
+}
+
+.blogHref:hover p, .blogHref:focus p, .blogHref:active p {
+	color: royalblue;
+	transition: 0.5s;
+}
+
+.blogReportDialogContentBlogID,
+	.blogMessageReportDialogContentBlogMessage,
+	.blogMessageReportDialogContentBmrReason,
+	.blogMessageReportDialogContentBmrStatus,
+	.blogReportDialogContentBlogID, .blogReportDialogContentBrStatus,
+	.blogReportDialogContentBrReason {
+	margin-left: 5px;
+}

@@ -1,0 +1,42 @@
+table{
+	width:90% !important;
+	table-layout : fixed;
+	word-wrap : break-word;/*���^��r�n�_��*/
+}
+
+thead{
+    background-color: #eee;
+    color: black;
+}
+
+th{
+    text-align: center;
+}
+
+td{
+	vertical-align:middle !important;
+	text-align: center;
+}
+
+td > img{
+    width:50%;    
+}
+
+/* ul#adTab{ */
+/* 	position: relative; */
+/*     z-index: 0; */
+/* } */
+
+
+ /*因為左方小選單一直被tabs擋住*/
+ #content{
+ 	position: absolute !important;
+ 	z-index: -1 !important;
+ 	width: auto !important;
+ }
+ .ad_text,
+ .ad_link,
+ .ad_title{
+ 	text-align: left;
+ 	word-break: break-all;
+ }

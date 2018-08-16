@@ -1,0 +1,39 @@
+body > div.container > div{
+    margin-top: 10px;
+}
+
+html {
+    height: 100%;
+}
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.footer {
+    box-sizing: border-box;
+    bottom: 0px;
+    width: 100%;
+}
+.container {
+    flex: 1;
+}
+
+.row {
+    margin-top:10px;
+    height: auto;
+}
+
+
+/*search-bar*/
+
+.search{
+    height: 50px;
+    background-color: #999;
+    -webkit-border-radius: 4px;
+    outline: 2px solid #fff;
+    outline-offset: -2px;
+    border: 2px solid #fff;
+    padding-top: 30px;
+    font-weight: 600;
+}

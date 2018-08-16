@@ -1,0 +1,155 @@
+/** shapes **/
+.order-content-detail{
+	   letter-spacing: 2px;
+	    font-family: 'Oswald', 'Noto Sans TC', sans-serif;
+	    font-size: 1rem;
+}
+.prod-img-wrap,
+.prod-img-content {
+	width: 96px;
+	height: 96px;
+}
+
+.prod-img-wrap {
+	position: relative;
+}
+
+.prod-img-content {
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat no-repeat;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+
+.form-submit{
+	text-align: right;
+}
+
+.order-content-prod-qty {
+	margin-bottom: 10px;
+	height:40px;
+}
+
+.order-content-prod-name{
+	height:70px;
+	overflow:hidden;
+}
+.order-content-prod-price-text{
+	margin-left: 560px;
+}
+.order-content-prod-name,.order-content-prod-qty{
+	margin-left: 20px;
+	
+}
+.list-inline>li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+li[data-index='1'], li[data-index='2'], li[data-index='3'], li[data-index='4'], li[data-index='5'], li[data-index='6'] {
+    border-bottom: initial;
+    border-bottom-width: initial;
+    border-bottom-style: initial;
+    border-bottom-color: initial;
+    width: 25px;
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+}
+.order_id{
+	text-align: right;
+	margin-bottom: 8px;
+}
+
+.host {
+    margin-bottom: -25px;
+}
+
+.row {
+	    font-family: 'Oswald', 'Noto Sans TC', sans-serif;
+}
+/*賣家照片*/
+
+@media screen and (max-width: 992px) .host .photo {
+	width: 45px;
+	height: 45px;
+}
+
+.host .photo {
+	position: relative;
+	display: inline-block;
+	width: 55px;
+	height: 55px;
+	margin-right: 10px;
+	padding: 0;
+	border-radius: 50%;
+}
+
+.photo {
+	display: block;
+	width: 100%;
+	padding-top: 10%;
+	vertical-align: top;
+	background: #c0c0c0;
+	background-position: center;
+	background-size: cover;
+}
+
+.host .text {
+	display: inline-block;
+	width: 86%;
+	margin-top: 20px;
+}
+
+/*賣家照片*/
+
+.modal-backdrop {
+	z-index: -1;
+		 
+}
+
+.cancel-order {
+    letter-spacing: 2px;
+    align-content: flex-end;
+    margin-left: 15px;
+    padding: 8px 37px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    color: #fff;
+    background-color:#d14f49;
+    margin-top: 20px;
+}
+.cancel-order:hover{
+	opacity: 0.8;
+	color: #fff;
+}
+.rating-star, .confirm-delivery, .cancel-details, .ship-order {
+    letter-spacing: 2px;
+    align-content: flex-end;
+    margin-left: 15px;
+    padding: 8px 37px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    color: #fff;
+    background-color:black;
+    margin-top: 20px;
+}
+.rating-star:hover,.cancel-details:hover,.confirm-delivery:hover{
+	background:#d14f49;
+	color: #fff;
+}
+
+.ship-order:hover{
+	opacity: 0.8;
+	color: #fff;
+}
+
+.cancel-order:focus, .rating-star:focus, .confirm-delivery:focus, .ship-order:focus, .cancel-details:focus{
+	color: #fff;
+	outline: -webkit-focus-ring-color auto 0px;
+}
+
+

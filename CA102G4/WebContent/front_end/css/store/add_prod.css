@@ -1,0 +1,129 @@
+@import"responsive.min.css";
+[draggable] {
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+	-khtml-user-drag: element;
+	-webkit-user-drag: element
+}
+
+.uploadArea {
+	border: dashed #676465;
+	text-align: center;
+	line-height: 30px;
+	font-size: 18px;
+	margin-bottom: 20px!important;
+	cursor: pointer;
+	max-width: 200px;
+	height:160px;
+}
+
+.uploadArea.selected {
+	border: dashed #c16853!important;
+}
+
+.uploadArea .new {
+	padding-top: 15px!important
+}
+
+.uploadArea input[type='file'] {
+	height: 30px;
+	color: transparent
+}
+
+.uploadArea i {
+	font-size: 25px;
+	padding-top: 50px
+}
+
+.image-preview img {
+	padding-top: 0px!important;
+	width: 200px;
+	height: 150px
+}
+
+.image-preview .remove {
+	text-align: right;
+	color: white;
+	position: absolute;
+	width: 100%;
+	padding-right: 7px;
+	background-color: #373435;
+	opacity: .4;
+	height: 25px
+}
+
+.image-preview .remove i {
+	font-size: 25px;
+	padding: 0;
+	margin: 0;
+	opacity: 1!important;
+}
+
+.item-box,
+.box-drag {
+	float: left;
+	display: block
+}
+
+.no-margin {
+	margin: 0px!important
+}
+
+.no-padding {
+	padding: 0px!important
+}
+
+
+
+#product-name{
+	border: 0px solid #d1d3d4;
+	width: 75%;
+	min-height: 100px;
+	font-size: 20px;
+}
+
+#product-unit,#product-price{
+	border: 0px solid #d1d3d4;
+	width: 100%;
+	min-height: 50px;
+	font-size: 15px;
+}
+#product-category{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#submit-product-add,.btn{
+	background: #111111;
+	color: white;
+	text-align: right;
+	font-family: 'Oswald','Noto Sans TC', sans-serif; 
+	font-size: 14px;
+}
+#submit-product-add:hover,.btn:hover{
+	background: #e65540;
+	color: white;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #b8bdc4;
+    opacity: 1; /* Firefox */
+   font-family: "Roboto Condensed", sans-serif;
+}
+
+.btn{
+	padding: 8px 37px;
+	letter-spacing: 4px;
+	border-radius: 0px; 
+}
+
+body {
+    color: #666;
+    }
+    
+:focus {
+    outline: -webkit-focus-ring-color auto 0px;
+}
+

@@ -1,0 +1,309 @@
+body > div.banner.about-bg{
+    height: 150px;
+}
+
+body > div.banner.about-bg > div.header{
+    height: 80px;
+}
+
+
+body {
+    font-family: 'Oswald', 'Noto Sans TC', sans-serif !important;
+    overflow-x: hidden; 
+    color: #2b2b2b;
+}
+
+img {
+    max-width: 100%;
+    margin-left: 50px;
+}
+
+.preview {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+  @media screen and (max-width: 996px) {
+    .preview {
+      margin-bottom: 20px; } }
+
+.preview-pic {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1; }
+
+.preview-thumbnail.nav-tabs {
+  border: none;
+  margin-top: 15px; }
+  .preview-thumbnail.nav-tabs li {
+    width: 18%;
+    margin-right: 2.5%; }
+    .preview-thumbnail.nav-tabs li img {
+      max-width: 100%;
+      display: block; }
+    .preview-thumbnail.nav-tabs li a {
+      padding: 0;
+      margin: 0; }
+    .preview-thumbnail.nav-tabs li:last-of-type {
+      margin-right: 0; }
+
+.tab-content {
+  overflow: hidden; }
+
+.tab-content img {
+    width: 100%;
+    -webkit-animation-name: opacity;
+            animation-name: opacity;
+    -webkit-animation-duration: .3s;
+            animation-duration: .3s; 
+    height: 300px;
+    width: 400px;
+    margin-top: 50px;
+
+}
+
+.card {
+    height: 550px;
+    margin-top: 40px;
+    background: white;
+    padding: 3em;
+    line-height: 1.5em;
+    font-family: 'Oswald', 'Noto Sans TC', sans-serif !important;
+}
+
+
+@media screen and (min-width: 997px) {
+  .wrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 0px;
+    } }
+
+.details {
+    width: 350px;
+    margin-left: -20px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column; 
+}
+
+.colors {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1; 
+}
+
+.product-title, .price, .sizes, .colors {
+
+}
+
+.checked, .price span {
+  color: #ff9f1a; }
+
+.product-title, .rating, .product-description, .price, .vote, .sizes {
+  margin-bottom: 15px; }
+
+.product-title {
+    text-decoration:none;
+    margin-top: 6px;
+    font-size:18px ;
+    margin-top: 0;
+    width: 100px;
+    font-family: 'Oswald', 'Noto Sans TC', sans-serif !important;
+}
+
+.size {
+  margin-right: 10px; }
+
+.size:first-of-type {
+    margin-left: 40px; }
+
+.color {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  height: 2em;
+  width: 2em;
+  border-radius: 2px; }
+  .color:first-of-type {
+    margin-left: 20px; }
+
+.add-to-cart, .like {
+  background: #ff9f1a;
+  padding: 1.2em 1.5em;
+  border: none;
+  text-transform: UPPERCASE;
+  font-weight: bold;
+  color: #fff;
+  -webkit-transition: background .3s ease;
+          transition: background .3s ease; }
+  .add-to-cart:hover, .like:hover {
+    background: #b36800;
+    color: #fff; }
+
+.not-available {
+  text-align: center;
+  line-height: 2em; }
+  .not-available:before {
+    font-family: fontawesome;
+    content: "\f00d";
+    color: #fff; }
+
+.orange {
+  background: #ff9f1a; }
+
+.green {
+  background: #85ad00; }
+
+.blue {
+  background: #0076ad; }
+
+.tooltip-inner {
+  padding: 1.3em; }
+
+@-webkit-keyframes opacity {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(3);
+            transform: scale(3); }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(3);
+            transform: scale(3); }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+      transform: scale(1); }
+} 
+.hr_setting{
+    border: 0.5px solid hsla(0,0%,79%,.5);
+    width: 100%;
+    margin-right: 20px;
+    margin-left: 0px;
+    margin-top: 11px;
+    margin-bottom: 15px;
+    
+}
+.tag_context{
+    width: 100%;
+    height: 200px;
+}
+body > div.container > div > div > div > div.details.col-md-6 > div.rating > div.icon_all > img:nth-child(1){
+    margin-left: 10px;
+}
+
+.profile_all{
+    display: inherit;
+    height: 40px;
+}
+.profile_photo{
+    border-radius:50px;
+    width: 150px;
+    display: inline-block;
+    width: 70px;
+}
+
+.profile_photo_hr{
+    width: 100px;
+    margin-top: 5px;
+}
+
+
+body > div.container > div > div > div > div.details.col-md-6 > div.profile_all > div.profile_photo > img{
+        border-radius:50px;
+}
+.profile_photo_hr_btn{
+    width: 100px;
+    height: 10px;
+}
+body > div.container > div > div > div > div.details.col-md-6 > div.rating > hr{
+    margin-top: 33px;
+}
+
+.waring_icon{
+    float: right;
+    width: 24px;
+}
+
+body > div.container > div > div > div > div.details.col-md-6 > div.profile_all > div.profile_photo_hr > a{
+    text-decoration: none;
+    color:#2b2b2b;
+    
+}
+
+body > div.container > div > div > div > div.details.col-md-6 > div.rating > div.waring_icon > a{
+    color: black;
+}
+
+body > div.container > div > div > div > div.details.col-md-6 > div.rating > div:nth-child(3) > button{
+    background-color:white;
+    float: right;
+}
+
+
+.like_heart_position{
+    background-color:white;
+    border:none;
+    outline:none;
+}
+
+.body > div.container > div > div > div > div.details.col-md-6 > div.rating > div.icon_all > button > i{
+    width: 20px;
+    height: 20px;
+    font-family: 'Oswald', 'Noto Sans TC', sans-serif !important;
+    font-weight: 400;
+    color: black;
+}
+
+.reportReasonContent,.reportContent {
+	font-family: 'Oswald', 'Noto Sans TC', sans-serif !important;
+	width: 100% !important;
+	height: 100% !important;
+	color: black;
+}
+.ui.reportMessage.form {
+	resize: none;
+	height:100%;
+}
+
+$("#collect").click(function () {
+        $("#collectMessage").dialog("open");
+    });
+    
+    $("#collectMessage").dialog({
+        autoOpen: false,
+        closeOnEscape: false,
+        hide: 'blind',
+        show: 'blind',
+        title: '訊息',
+        modal: true,
+        width: '150px',
+        autofocus: false,
+        resizable: false,
+        draggable: false,
+        buttons: {
+            "確定": function () {
+             $(this).dialog("close");
+            }
+        }
+    });

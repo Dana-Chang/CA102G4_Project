@@ -1,0 +1,56 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+
+
+	<tbody>
+		<tr>
+			<td>${advo.ad_ID}</td>
+			<td class="ad_title">${advo.ad_Title}</td>
+			<td class="ad_text">${advo.ad_Text}</td>
+			<td class="ad_link">${advo.ad_Link}</td>		
+			<td><img src="<%=request.getContextPath()%>/ADPicReader?AD_ID=${advo.ad_ID}"></td>
+			<td>
+				<fmt:formatDate value="${advo.ad_PreAddTime}" pattern="yyyy-MM-dd kk:mm"/>
+				/
+				<fmt:formatDate value="${advo.ad_PreOffTime}" pattern="yyyy-MM-dd kk:mm"/>
+			</td>
+			<td>
+				<form action="<%=request.getContextPath()%>/ad.do" method="post">
+					<input type="hidden" name="adId" value="${advo.ad_ID}">
+					<input type="hidden" name="action" value="RightNow_UpdateStat">
+					${advo.ad_Stat == 0 
+						?
+						"<input type='hidden' name='stat' value='1'>
+						<button type='submit' class='btn btn-warning'><i class='fas fa-bell'></i>上架廣告</button>" 
+						:
+						"<input type='hidden' name='stat' value='0'>
+						<button type='submit' class='btn btn-success'><i class='fas fa-arrow-down'></i>下架廣告</button>"	
+					  }
+		        </form>
+			</td>
+			<td>
+				<form action="<%=request.getContextPath()%>/ad.do" method="post">
+					<input type="hidden" name="adId" value="${advo.ad_ID}">
+					<input type="hidden" name="action" value="getOne_For_Update">
+					${advo.ad_Stat == 0 
+						?
+						"<input type='submit' class='btn btn-primary' value='修改'>" 
+						:
+						"<input type='submit' class='btn btn-primary' value='無法修改' disabled='disabled'>"	
+					  }	
+				</form>
+			</td>
+			<td>
+				<form action="<%=request.getContextPath()%>/ad.do" method="post" onSubmit="return confirm('確認要刪除嗎?');">
+					<input type="hidden" name="adId" value="${advo.ad_ID}">
+					<input type="hidden" name="action" value="delete">
+					${advo.ad_Stat == 0 
+						?
+						"<input type='submit' class='btn btn-danger' value='刪除'>" 
+						:
+						"<input type='submit' class='btn btn-danger' value='無法刪除' disabled='disabled'>"	
+					  }		
+				</form>
+			</td>
+		</tr>	
+
+	</tbody>

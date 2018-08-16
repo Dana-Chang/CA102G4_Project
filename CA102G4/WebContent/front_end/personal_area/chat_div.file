@@ -1,0 +1,32 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+	"<div class='input_chatContainer_select' value='"+openChatRoomID+"'>"+
+		"<div class='input_chatContainer' id='"+openChatRoomID+"' value='"+openChatRoomID+"'>"+
+	        "<div class='input_chatHeader'>&nbsp;"+openChatRoomName+ 
+                "<span style='float: right;padding-right: 10px'>"+
+                	"<span data-toggle='tooltip' title='關閉' data-placement='top' class='close'>"+
+                		"<i class='fas fa-times'></i>"+
+                	"</span> "+
+                "</span>"+
+                "<span style='float: right;padding-right: 10px' id='chat_addFri_span'>"+
+                   " <span data-toggle='tooltip' title='加入更多好友' data-placement='top' class='addOneFri'>"+
+                       " <i class='fas fa-plus'></i>"+
+                   " </span>"+
+                "</span>"+
+                "<span style='float: right;padding-right: 10px' id='chatJoinList_span'>"+
+                   " <span data-toggle='tooltip' title='名單' data-placement='top' class='chatJoinList'>"+		                
+                		"<i class='fas fa-list-ul'></i>"+
+                   " </span>"+
+                "</span>"+
+    		"</div>"+
+	        "<div class='input_chatContext'>"+
+	        "<!--這裡是聊天紀錄--></div>"+
+	        "<div class='input_chatFooter'>"+
+	            "<div class='input-group'>"+
+	              "<input type='text' id='message' name='message' class='form-control' placeholder='輸入訊息.....' "+
+	              	"aria-describedby='basic-addon1'>"+
+	              "<span class='input-group-addon btn'>送出</span>"+
+	            "</div>"+
+	        "</div>"+
+	    "</div>"+
+	 "</div>"

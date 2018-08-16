@@ -1,0 +1,88 @@
+/*好友搜尋_分類區塊*/
+#all_fri_search{
+    width: 100%;
+/*     height: 30px; */
+    height: auto;
+}
+/*好友分類*/
+#all_fri_search>div{
+    height:100%;
+}
+#friCate{
+    margin-bottom: 0;
+}
+#friCate>li>a{
+    padding-top: 1;
+    padding-bottom: 0;
+}
+/*所有好友搜尋輸入*/
+#all_fri_search .input-group-addon,
+#all_fri_search .form-control{
+    max-height:30px;
+    font-family: inherit;
+}
+
+/*好友管理 list*/
+#fri>.list-group>.list-group-item{
+    background-color:none;
+    border:1;
+}
+
+#fri .list-group-item {
+    width: 390px;
+    height: 125px;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius:5px;
+    display: inline-block;
+}
+#fri .list-group-item a,
+#fri .list-group-item div{
+    float:left;
+    height: 100%;
+}
+/*好友卡中的名子*/
+#fri .list-group-item div p{
+    padding:40px 0 0 10px;
+    font-size:1em;
+    max-width: 100px
+}
+/*好友卡中的button-div*/
+#fri .list-group-item>div:last-child{
+    float:right;
+    height: 100%;
+    padding:25px 10px 15px 0;
+    width: 100px;
+}
+/*好友卡中的button擺放位置01*/
+#fri .list-group-item>div:last-child button{
+    margin-bottom: 10px;
+    margin-left: 10px
+}
+/*好友卡中的button擺放位置02*/
+#allFri .list-group-item>div:last-child button,
+#newFri .list-group-item>div:last-child button,
+#friBir .list-group-item>div:last-child button{
+    margin-left: 40px
+}
+
+/*好友卡中的image*/
+#fri .list-group-item img{
+    width: 140px;
+    max-height: 100%;
+    border-radius: 5px 0px 0px 5px;
+    overflow:hidden;
+    object-fit: cover;
+}
+
+/*若搜尋不到文章或圖片時，將會顯示 驚嘆號圖片nothing.png*/
+
+.nothing_span{
+	text-align:center;
+}    
+.nothing{
+	width:50px;
+	heigh:50px;
+}

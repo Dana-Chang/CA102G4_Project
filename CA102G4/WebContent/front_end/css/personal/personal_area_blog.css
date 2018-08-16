@@ -1,0 +1,60 @@
+.ui.four.stackable.cards {
+    margin: 0;
+}
+.edit_Del {
+    /*    margin: 0 auto !important;*/
+    align-self: center;
+    width: 100% !important;
+}
+.editBlog {
+    border: solid 1px #2ecc40;
+    color: #2ecc40;
+    width: 45%;
+}
+.editBlog:hover,
+.editBlog:active {
+    background-color: #2ecc40;
+    color: white;
+}
+.delBlog {
+    border: solid 1px #ff695e;
+    color: #ff695e;
+    width: 45%;
+}
+.delBlog:hover,
+.delBlog:active {
+    background-color: #ff695e;
+    color: white;
+}
+.right.floated.author.nowrap {
+    text-align: center;
+    width: 100%;
+}
+.fluid.card:hover {
+    text-decoration: none;
+}
+.fluid.card:hover img {
+    transform: scale(1.1) !important;
+}
+img {
+    transition: all 1.2s ease;
+}
+.image {
+    overflow: hidden;
+}
+.ui.page.grid.padded.page_bar {
+    text-align: center;
+}
+.page_info {
+    padding: 0.5em 1em;
+}
+.update.form,
+.delete.form {
+	display: inline;
+}
+#all_fri_search {
+	display: flex;
+}
+.ui.four.stackable.cards {
+	display: flex;
+}

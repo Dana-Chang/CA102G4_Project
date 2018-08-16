@@ -1,0 +1,253 @@
+/*banner*/
+
+.parallax {
+/* Set a specific height */
+min-height: 400px;
+/* Create the parallax scrolling effect */
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+
+}
+
+.page-header-module .module-title,.page-header-module .module-subtitle{
+	color: #fff;
+}
+.module-title {
+	position: relative;
+	margin: 0 0 70px;
+	color: #111;
+	font-size: 30px;
+	font-weight: 400;
+	text-align: center;
+	letter-spacing: 4px
+}
+.module-subtitle {
+	margin-bottom: 70px;
+	color: #111;
+	font-size: 18px;
+	text-align: center
+}
+.module-title+.module-subtitle {
+	margin-top: -35px
+}
+
+.font-alt {
+	font-family: "Roboto Condensed", sans-serif;
+	letter-spacing: 2px;
+	text-transform: uppercase
+}
+.font-serif {
+	font-family: Volkhov, "Times New Roman", sans-serif;
+	font-style: italic
+}
+
+.page-header-module {
+	text-align: center;
+}
+.page-header-module .module-title {
+	margin: 0
+}
+.page-header-module .module-subtitle {
+	margin-top: 35px
+}
+
+.page-header-module:before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(34, 34, 34, .3);
+	content: " ";
+}
+
+.page-header-module.module {
+	padding: 190px 0 140px;
+}
+
+.page-header-module:before {		
+				position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(34, 34, 34, .3);
+			content: " ";
+				min-height: 400px;
+			/* Create the parallax scrolling effect */
+			background-attachment: fixed;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+}
+.module,
+.module-small {
+	position: relative;
+	padding: 130px 0;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: cover;
+}
+/*banner end*/
+
+/*nav*/
+
+
+a {
+	color: #111;
+	text-decoration: none;
+}
+
+a:hover,
+a:focus {
+	color: #aaa;
+	text-decoration: none;
+}
+
+a:focus {
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px
+}
+.prod-breadcrumb {
+	float: left;
+	margin-bottom: 1.236em;
+	font-size: 16px;
+	line-height: 33px
+}
+.module-small-shop .prod-breadcrumb {
+	margin-bottom: 0
+}
+.module-small {
+	padding: 70px 0
+}
+
+/*nav end*/
+
+
+/*排序篩選*/
+
+.prod-ordering {
+	float: right;
+	margin-right: 0;
+	margin-bottom: 0
+}
+
+.prod-ordering select {
+	height: 33px;
+	padding-left: 10px;
+	border: 1px solid #eaeaea;
+	border-radius: 2px;
+	font-family: "Roboto Condensed", sans-serif;
+	font-size: 12px;
+	letter-spacing: 2px,;
+	color: inherit;
+}
+
+/*排序篩選end*/
+.main {
+	position: relative;
+	z-index: 1;
+	color: #666
+}
+
+/*商品排版*/
+
+
+
+/*商品排版 end*/
+
+
+
+/*RWD*/
+@media screen and (max-width:992px) {
+.module-small-shop .prod-breadcrumb {
+		margin-bottom: 1.236em
+	}
+.prod-breadcrumb {
+		width: 100%;
+		margin-bottom: 20px;
+		line-height: 33px;
+		text-align: center
+	}
+
+.prod-ordering,
+	.prod-ordering select {
+		width: 100%;
+		margin-right: 0
+	}
+	.shop-with-sidebar ul.products li.product:nth-child(3n+1) {
+		clear: none
+	}
+
+
+}
+
+@media screen and (max-width:768px) {
+.prod-breadcrumb,.prod-ordering,
+.prod-ordering select
+{
+float: initial
+}
+.shop-with-sidebar {
+		float: none!important
+	}
+.shop-with-sidebar,
+	.sidebar-shop {
+		width: 100%
+	}
+	.sidebar-shop {
+		padding-left: 15px
+	}
+
+}
+
+.container {
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 15px;
+	padding-right: 15px
+}
+@media (min-width:768px) {
+	.container {
+		width: 750px
+	}
+}
+
+@media (min-width:992px) {
+	.container {
+		width: 970px
+	}
+}
+
+@media (min-width:1200px) {
+	.container {
+		width: 1170px
+	}
+}
+
+.row:before,
+.row:after,
+.container:before,
+.container:after,
+.container-fluid:before,
+.container-fluid:after{
+	content: " ";
+	display: table
+}
+
+.row:after,
+.container:after,
+.container-fluid:after,
+{
+	clear: both
+}
+
+.row {
+	margin-left: -15px;
+	margin-right: -15px;
+	margin-top: 0px;
+    height: 0px
+}
+

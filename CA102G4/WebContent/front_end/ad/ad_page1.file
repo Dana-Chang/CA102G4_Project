@@ -1,0 +1,40 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	int rowPerPage=2;  			//每頁要放的筆數
+	int totalNumber=0; 			//資料總筆數
+	int pageNumber=0;  			//總頁數
+	int whichPage=1;   			//第幾頁
+	int pageIndexArray[] = null;//存放每頁開始的index
+	int pageIndex=0;			
+%>
+
+<%
+	totalNumber=list.size();    //先拿出list總共有幾筆
+	if(totalNumber % rowPerPage != 0){
+		pageNumber = totalNumber/rowPerPage +1 ;
+	}else{
+		pageNumber = totalNumber/rowPerPage;
+	}
+	
+	pageIndexArray= new int[pageNumber];
+	for(int i = 1 ; i <= pageIndexArray.length; i++){
+		pageIndexArray[i-1]=i*rowPerPage-rowPerPage;
+	}
+	
+%>
+
+<%
+	try{
+		whichPage = Integer.parseInt(request.getParameter("whichPage"));
+		pageIndex = pageIndexArray[whichPage-1];
+	}catch(NumberFormatException e){ //第一次執行的時候
+		whichPage=1;
+		pageIndex=0;
+	}catch(ArrayIndexOutOfBoundsException e){
+		if( pageNumber > 0 ){
+			whichPage=pageNumber;  //將資料鎖在最後一頁
+			pageIndex=pageIndexArray[pageNumber-1];
+		}
+		
+	}
+%>

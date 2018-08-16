@@ -1,0 +1,32 @@
+.module-cart-bottom {
+    padding-top: 0;
+}
+.module, .module-small {
+    position: relative;
+    padding: 0px 0px 110px 0px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+.fa-truck:before {
+    content: "\f0d1";
+}
+
+.tab-content .tab-pane {
+    padding: 20px 0;
+}
+.tab-content>.active {
+    display: block;
+}
+
+.btn{
+	 
+ letter-spacing: 0.5em;
+}
+
+.place-order{
+	padding: 0.5rem 3rem;
+}

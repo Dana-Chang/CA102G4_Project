@@ -1,0 +1,42 @@
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover,
+	.pagination>.active>span:hover, .pagination>.active>a:focus,
+	.pagination>.active>span:focus {
+	background-color: black;
+	border-color: black;
+}
+
+.pagination>li>a, .pagination>li>span {
+	color: black;
+}
+
+.prod-title {
+	height: 3rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.block2-name{
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.prod-img {
+	/* 				position:absolute;top:0;bottom:0;margin:auto; */
+	
+}
+
+
+.page-top .s-text8 {
+	font-size: 1.0rem;
+}
+
+button {
+	letter-spacing: 4px;
+}
+
+.s-text7 {
+	font-size: 18px;
+}
+
+.size6 {
+	height: 50px;
+}

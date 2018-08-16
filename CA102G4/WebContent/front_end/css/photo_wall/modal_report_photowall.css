@@ -1,0 +1,38 @@
+.js .animate-box-modal {
+  position: relative;
+}
+
+#verification\20 code{
+    width: 300px;
+}
+
+#myModal > div > div > form > div:nth-child(7){
+    margin-left: 50%;
+    top: -70px;
+    position: relative;
+    border-bottom-width: 20px;
+    width: 100px;
+}
+
+#myModal > div > div > form > div:nth-child(8) > p{
+    font-size: 17px;
+    position: relative;
+    top: -35px;
+}
+
+#myModal > div > div > form > div:nth-child(9){
+    position: relative;
+    top: -20px;
+}
+
+#verification\20 code{
+    width: 300px;
+}
+#myModal_foget > div > div > form > div:nth-child(5){
+    margin-left: 50%;
+    top: -70px;
+    position: relative;
+}
+body > div.banner.about-bg > div:nth-child(3) > form > div:nth-child(9) > button.ui.google.button.btn3 > i{
+    color:white;
+}

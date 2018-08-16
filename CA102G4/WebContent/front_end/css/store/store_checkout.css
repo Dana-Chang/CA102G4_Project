@@ -1,0 +1,108 @@
+
+/*送貨地址*/
+
+.checkout-shipping-title {
+	flex: 1;
+	margin-bottom: 1rem;
+}
+
+.checkout-shipping-price {
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	-moz-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	text-align: right;
+	font-size: 14px;
+	color: #222;
+}
+
+.checkout-review{
+	letter-spacing: 2px;
+	font-family: 'Oswald', 'Noto Sans TC', sans-serif;
+	font-size: 18px;
+}
+
+
+td.product-subtotal{
+	text-align: right;
+}
+
+.checkout-shipping-details .checkout-shipping-details-address,
+.checkout-shipping-details .checkout-shipping-details-phone {
+	margin-left: 1rem;
+}
+
+/*送貨地址*/
+
+.btn-change-shipping,.next-step,.order-list-mgt{
+    display: block;
+    width: 100%;
+    margin-bottom: 0;
+    padding: 8px 37px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    color: #fff;
+    background: #111111;
+    box-shadow: none;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    -webkit-transition: all 0.125s ease-in-out 0s;
+    transition: all 0.125s ease-in-out 0s;
+    text-align: center;
+    font-family: 'Oswald', 'Noto Sans TC', sans-serif;
+}
+
+.btn-change-shipping{
+	width: 30%;
+	
+}
+.add-store,.add-home-addr{
+	width: 20%;
+	color: #fff;
+    background: rgb(102, 168, 166);
+}
+.add-store:hover,.add-home-addr:hover{
+	color: #fff;
+	opacity: 0.8;
+}
+.add-store:focus,.add-home-addr:focus{
+	color: #fff;
+}
+.btn-change-shipping:hover ,.next-step:hover,#order-list:hover{
+    background-color: #e65540;
+    color: #fff;
+}
+
+.btn-change-shipping:focus,.order-list-mgt:focus,.place-order:focus{
+	color: #fff;
+}
+
+.modal-backdrop {
+  z-index: -1;
+ 
+}
+
+.btn-close{
+	width: 10%;
+	color: #fff;
+    background: rgb(209, 79, 73);
+}
+
+.btn-close:hover{
+	color: #fff;
+	opacity: 0.8;
+}
+
+.btn-done{
+	width: 10%;
+	color: #fff;
+    background: #111111;
+}
+.btn-done:hover{
+	color: #fff;
+	opacity: 0.8;
+}

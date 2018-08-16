@@ -1,0 +1,496 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+	<!--小的聊天列表 startOK -->
+    <div class="chatContainer">
+        <div class="chatHeader">
+            
+                &nbsp;聊天室
+                <span style="float: right;padding-right: 10px" id="chat_addFri_span">
+                    <span data-toggle="tooltip" title="建立新對話" data-placement="top" >
+                        <i class="fas fa-user-plus"></i>
+                    </span>
+                </span> 
+
+        </div>
+        <div class="chatContext">
+            <ul class="list-group">
+            	<li style="color: #4a4a4a;font-weight: bold;">好友</li>
+            	<!-- start這邊是列出我的朋友-->
+            	<c:forEach var="friVO" items="${myFri}">
+ 					<li class="list-group-item" id="${friVO.memID_Fri}status" onclick="checkOneByOneCR('${memberVO.mem_Id}','${friVO.memID_Fri}',2);">
+             			<img class='avatar' src='<%=request.getContextPath()%>/front_end/readPic?action=member&id=${friVO.memID_Fri}'>
+               			<!--//顯示好友名-->
+	                	${memberSvc.getOneMember(friVO.memID_Fri).mem_Name}
+	                	<span class="online_status">
+	                		<i class='fas fa-circle' style='color:#ADB5BD'></i>
+	                	</span>
+	                </li>
+	                </span>
+                </c:forEach>
+                <!-- end這邊是列出我的朋友-->
+                
+                <li style="color: #4a4a4a;font-weight: bold;">群組對話</li>
+             	<!-- 這邊是列出我參加的群組聊天-->
+            	<c:forEach var="crjVO" items="${myCRList}">
+ 					<li class="list-group-item" id="${crjVO.chatRoom_ID}item" onclick="openChatRoom('${crjVO.chatRoom_ID}','${chatRoomSvc.getOne_ByChatRoomID(crjVO.chatRoom_ID).chatRoom_Name}','more');">
+	                	<c:choose>
+		                	<c:when test="${chatRoomJoinSvc.getJoinMem_ByChatRoom(crjVO.chatRoom_ID).size() == 2}">
+		                		<c:forEach var="kk" items="${chatRoomJoinSvc.getJoinMem_ByChatRoom(crjVO.chatRoom_ID)}">
+		                			<c:if test="${kk.join_MemID != memberVO.mem_Id}">
+		                				<img class='avatar' src='<%=request.getContextPath()%>/front_end/readPic?action=member&id=${kk.join_MemID}'>
+		                			</c:if>
+		                		</c:forEach>
+		                	</c:when>
+		                	<c:otherwise>
+		                		<!-- 若為群組的時候，顯示群組的小圖片 -->		
+               					<img class='avatar' src='<%=request.getContextPath()%>/front_end/images/all/team.png'>
+		                	</c:otherwise>
+	                	</c:choose>
+               			<!--//顯示對應的聊天對話_名稱-->
+	                	${chatRoomSvc.getOne_ByChatRoomID(crjVO.chatRoom_ID).chatRoom_Name}
+	                	<!-- 選單 -->
+	                	<span class="caret"></span>
+					  	<ul class="dropdown-menu">
+					    	<li><a href="#">Action</a></li>
+					  	</ul>
+	                </li>
+	                </span>
+                </c:forEach>
+            </ul>
+        </div>
+        <div class="chatFooter">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1"><i class="fas fa-search"></i></span>
+              <input type="text" class="form-control" placeholder="搜尋" aria-describedby="basic-addon1" id="search_Fri">
+            </div>
+        </div>
+    </div>
+	<!--小的聊天列表 END -->
+    
+	<!-- Modal 建立群組聊天對話 start-->
+    <div class="modal fade" id="chat_AddFri_Modal" role="dialog">
+        <div class="modal-dialog">
+		<!-- Form開頭:新增群組聊天對話 OK-->   
+		<form action="<%=request.getContextPath()%>/chatRoom.do" method="post" onsubmit="return checkAddNewCR(this);">	
+          <!-- Modal 建立聊天視窗content start-->
+          <div class="modal-content" >
+            
+            <div class="modal-header">
+              <h4 class="modal-title">建立群組</h4>
+            </div>
+       
+            <div class="modal-body"> 
+                <!--輸入盒聊天對話-->
+                <div class="ui left icon input fluid">
+                  <input type="text" placeholder="為群組命名(10字為限)" id="chatName" name="input_newChatName" maxlength='12' required>
+                  <i class="users icon"></i>
+                </div>
+                <!--分隔線-->
+                <hr>
+                <!--搜尋要加入聊天對話的好友-->
+                <div style="height:400px;margin-top:10px">
+                      <div style="float:left;width:60%;height:inherit">
+                          <div class="ui icon input fluid">
+                              <input type="text" placeholder="搜尋要加入的用戶" id="search_Fri_modal">
+                              <i class="search icon"></i>
+                          </div>
+                          <div class="ui middle aligned selection list" style="height:89%;overflow:auto">
+                           <!-- 列出所有我的朋友 -->
+                           <c:forEach var="frivo" items="${myFri}">
+	                           <div class="item">
+	                               <input type="checkbox" class="ui checkbox" id="${frivo.memID_Fri}" name="select_fri" value="${frivo.memID_Fri}">
+	                               <label for="${frivo.memID_Fri}" style="width:80%">
+	                                  <img class="ui avatar image" src='<%=request.getContextPath()%>/front_end/readPic?action=member&id=${frivo.memID_Fri}'>
+	                                  <span class="content">${memberSvc.getOneMember(frivo.memID_Fri).mem_Name}</span>  
+	                               </label>
+	                           </div>
+                           </c:forEach>              
+                          </div>
+                      </div>
+                      <!--顯示已選擇加入聊天對話列表-->
+                      <div style="float:left;width:40%;height:inherit;border-left: 1px" id="select_Fri">
+                          <div style="padding-left: 20px;height: 10%">已選擇<i class="check circle icon"></i>
+                          </div>
+                          <div class="ui middle aligned selection list" style="height:89%;overflow:auto" id="select_FriList">
+                                <!--這裡我要塞被選到的好友；動態顯示--> 
+                          </div>
+                      </div>         
+                </div>    
+            </div>
+            
+            <div class="modal-footer"> 
+              <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+              <input  type="hidden" name="action" value="addNewCR"/>
+              <input  type="hidden" name="myMemId" value="${memberVO.mem_Id}"/>
+              <input  type="hidden" name="requestURL" value="<%=request.getServletPath()%>"/>
+              <input  type="hidden" name="addCR_token" value="${addCR_token}"/>
+              <button type="submit" class="btn btn-success">確認</button>
+            </div>
+        
+          </div>
+          <!-- Modal 建立群組聊天對話content END-->
+         </form>
+		<!-- Form結尾 -->  
+        </div>
+      </div>
+    <!-- Modal 建立群組聊天對話END -->
+ 
+	<!-- Modal 加入更多人的Modal start-->
+    <div class="modal fade" id="chat_AddMoreFri_Modal" role="dialog">
+        <div class="modal-dialog">
+        <!-- Form開頭:加入更多人聊天對話 -->   
+		<form method="post">
+          <!-- Modal 加入更多人聊天對話 content start-->
+          <div class="modal-content" > 
+            <div class="modal-header">
+              <h4 class="modal-title">
+              	<!-- 這邊要放哪間聊天對話要加入更多人的標題 -->
+              </h4>
+            </div>
+            <div class="modal-body"> 
+                <!--搜尋要加入聊天對話的好友-->
+                <div style="margin-top:10px">
+                      <div style="height:inherit">
+                          <div class="ui icon input fluid">
+                              <input type="text" placeholder="搜尋要加入的用戶" id="search_addMoreFri">
+                              <i class="search icon"></i>
+                          </div>
+                          <div class="ui middle aligned selection list" style="height:89%;overflow:auto">
+                           <!-- 列出所有我的朋友 -->
+                           <c:forEach var="frivo" items="${myFri}">
+	                           <div class="item">
+	                               <input type="checkbox" class="ui checkbox" id="${frivo.memID_Fri}" name="select_fri_more" value="${frivo.memID_Fri}">
+	                               <label for="${frivo.memID_Fri}" style="width:80%">
+	                                  <img class="ui avatar image" src='<%=request.getContextPath()%>/front_end/readPic?action=member&id=${frivo.memID_Fri}'>
+	                                  <span class="content">${memberSvc.getOneMember(frivo.memID_Fri).mem_Name}</span>  
+	                               </label>
+	                           </div>
+                           </c:forEach>              
+                          </div>
+                      </div>       
+                </div>    
+            </div>
+
+            <div class="modal-footer"> 
+              <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+              <input  type="hidden" name="action" value="AddMoreFri"/>
+              <input  type="hidden" name="addMoreFri_CRId" value=""/>
+              <button type="button" class="btn btn-success" name="AddMoreMem_btn">確認</button>
+            </div>
+          </div>
+          <!-- Modal 加入更多人聊天對話 content END-->
+         </form>
+		<!-- Form 加入更多人聊天對話  結尾 -->  
+        </div>
+    </div>
+    <!-- Modal 加入更多人聊天對話 END -->
+
+    <!-- 顯示聊天名單的Modal Start -->   
+    <div class="modal fade " id="chatRoomJoin_Modal" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal 建立聊天視窗content start-->
+          <div class="modal-content" >
+          	    <div class="modal-header">
+	              <h4 class="modal-title">
+	              	<!-- 這邊要放哪間聊天對話要加入更多人的標題 -->
+	              </h4>
+	            </div>
+	            <div class="modal-body">
+	                <!--每個item要放...目前已參加聊天對話的名單-->              
+	            </div>
+	            
+	            <div class="modal-footer"> 
+	              <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+	            </div>
+          </div>
+          <!-- Modal 建立聊天視窗content END-->
+        </div>
+      </div> 
+	<!-- 顯示聊天名單的Modal END -->
+	
+	<!-- 顯示圖片的Modal Start -->   
+    <div class="modal fade " id="chatRoomPhoto_Modal" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal 顯示圖片視窗content start-->
+          <div class="modal-content">
+          		<div style="text-align: right;">
+          			<button type="button" class="btn" data-dismiss="modal">x</button> 
+          		</div>
+	            <div class="modal-body" style="text-align:center;">
+	            	<img id="photoModal">         
+	            </div>
+          </div>
+          <!-- Modal 顯示圖片視窗content END-->
+        </div>
+      </div> 
+	<!-- 顯示圖片的Modal END -->
+
+    <script>
+ 
+    /***********************頁面準備好時，連線WS***********************/
+    $(document).ready(function(){
+	    connect();		
+	    $('#errorModal_Ailee').modal();
+	 });
+	/***********************若有錯誤訊息時，就會跳出視窗***********************/
+   	
+
+   	/***********************聊天會用到的變數********************************/
+	var openChatRoomID;     //要開啟的聊天對話編號
+	var openChatRoomName;	//要開啟的聊天對話名稱
+	/*var marginRight = 350;原本來記錄處理聊天室窗位置*/
+	var webSocketState = 0 ;//放ws常數
+	var requestURLForJS = "<%=request.getContextPath()%><%=request.getServletPath()%>";
+	var loginMemId_Now = "${memberVO.mem_Id}"; //現在登入者的會員ID
+	
+	//動態監聽視窗大小
+    $(window).resize(function() {
+        var wdth=$(window).width();
+    });
+	
+    /*********************透過聊天室列表，點選開啟聊天對話的視窗************cnt可能2或more******/
+	function openChatRoom(chatRoom_id,chatRoom_Name,cnt){
+		//透websocket就緒狀態常數，讓斷線時，使用者不能click CRList 聊天
+    	if(webSocketState != 3){
+			openChatRoomID = chatRoom_id;
+			openChatRoomName = chatRoom_Name;
+			if($("#"+openChatRoomID+"").length === 0){
+				
+				//要求歷史訊息
+				var jsonObj_hist ={
+						"TYPE":"history",
+						"TO_CHATROOMID":openChatRoomID,
+						"MEM_ID":loginMemId_Now
+					};
+				webSocket.send(JSON.stringify(jsonObj_hist));
+				
+				$('body').append(<%@ include file="/front_end/personal_area/chat_div.file"%>);
+				
+				var right = Number(sessionStorage.getItem("marginRight"));
+				if(right > 1220 || right <= 0){
+					console.log("超過邊界了openChatRoom");
+					right = 350;
+				}
+				console.log("openChatRoom時，長度:"+right);
+				$("#"+openChatRoomID+"").css("right",right);
+				sessionStorage.setItem("marginRight",right+290);
+			}else{
+				//console.log("已經存在了啦");
+			}
+
+    	}
+    	console.log("判斷是否為一對一聊天："+cnt);
+    	//不讓一對一的聊天，有加入更多人的按鈕
+		if(cnt.toString().trim() === '2'){
+			$("div.input_chatContainer_select[value='"+chatRoom_id+"'] .input_chatHeader>#chat_addFri_span").css("display","none");
+			$("div.input_chatContainer_select[value='"+chatRoom_id+"'] .input_chatHeader>#chat_addFri_span").css("disabled","disabled");
+			$("div.input_chatContainer_select[value='"+chatRoom_id+"'] .input_chatHeader").css("background-color","#AF9CDA");
+		}
+		
+    	sessionStorage.setItem(chatRoom_id,$("div.input_chatContainer_select[value='"+chatRoom_id+"']").html());
+		openChatRoomName = null;
+		openChatRoomID = null;
+    }
+	
+
+
+	/******************************WebSocket開始**************************/
+	var MyPoint = "/chat/${memberVO.mem_Id}";
+	var host = window.location.host;
+	var endPointURL = "ws://"+host+"<%=request.getContextPath()%>"+MyPoint;
+	var webSocket;
+	
+	function connect(){
+		//建立一個websocket,這行會觸發伺服器的onopen,待有回應後，會回來觸發JS的onopen
+		webSocket = new WebSocket(endPointURL);
+
+		
+		webSocket.onopen = function(event){
+			webSocketState = event.target.readyState;
+			$(".chatContainer>.chatHeader").prepend("&nbsp;<i class='fas fa-signal' style='color: #39ff14;'></i>");
+		};
+		
+		//收到訊息的時候
+		webSocket.onmessage = function(event){
+			var jsonObj = JSON.parse(event.data);
+			
+			/****************補通知*********************/
+			var titie = jsonObj.title; //通知才有的
+			if(titie != undefined){
+				alert("會進來通知:"+titie+"-");
+				return;
+			}
+			/****************補通知********************/
+			
+
+			var msgType = jsonObj.TYPE; //有兩種可能：chat及history及status
+			var messageArea;            //聊天內容區塊
+			var msgTime;				//收到訊息:時間
+			var msgContent;				//收到訊息:內容
+			var senderMemId;			//收到訊息:發送者
+			var msgColor;
+
+			if(msgType.trim() == "chat"){
+				openChatRoomID = jsonObj.TO_CHATROOMID;
+				msgTime = jsonObj.TIME;
+				msgContent = jsonObj.MSG;
+				senderMemId = jsonObj.MEM_ID;
+					
+				//若到對應聊天室的DIV時
+				if($("#" + openChatRoomID + "").length != 0){
+					//alert(document.getElementsByClassName("input_chatContext")[0].scrollHeight);
+					//alert($("#" + openChatRoomID +" .input_chatContext").height());
+					//會把收到的訊息，append到聊天對話內容
+					<%@ include file="/front_end/personal_area/chatContent_div.file" %>
+					$("#"+openChatRoomID+"").removeClass("chatWindow_Content");
+					$("#"+openChatRoomID+" .input_chatContext").scrollTop(99999999); //讓聊天內容的捲軸都是在最下面
+
+					if($("div.input_chatContainer_select[value='"+openChatRoomID+"']").html() == undefined){
+						//因為視窗存在的時候，可能有兩種狀況 1)有完成的div.input_chatContainer_select  2)先前存在sessionStorage
+						sessionStorage.setItem(openChatRoomID,$("div.input_chatContainer[value='"+openChatRoomID+"']").prop("outerHTML"));
+						return;
+					}
+					sessionStorage.setItem(openChatRoomID,$("div.input_chatContainer_select[value='"+openChatRoomID+"']").html());
+
+					return;
+				}
+
+				//要求歷史訊息
+				var jsonObj_hist_revd={
+						"TYPE":"history",
+						"TO_CHATROOMID":openChatRoomID,
+						"MEM_ID":loginMemId_Now
+					};
+				webSocket.send(JSON.stringify(jsonObj_hist_revd));
+				
+				//找到聊天對話名稱
+				openChatRoomName =jsonObj.TO_CRNAME;
+				
+				/*******start伺服端若判斷為是一對一對話時，會有回傳參數CNT，讓開啟的視窗顏色會是紫色*********/
+				var countColor = jsonObj.CNT;
+				//console.log("沒視窗時要append視窗");
+				
+				//動態新增DOM
+				$('body').append(<%@ include file="/front_end/personal_area/chat_div.file" %>);
+				
+				if(countColor != null){
+					if(countColor.toString() === '2'){
+						$("div.input_chatContainer_select[value='"+openChatRoomID+"'] .input_chatHeader").css("background-color","#AF9CDA");
+						$("div.input_chatContainer_select[value='"+openChatRoomID+"'] .input_chatHeader>#chat_addFri_span").css("display","none");
+						$("div.input_chatContainer_select[value='"+openChatRoomID+"'] .input_chatHeader>#chat_addFri_span").css("disabled","disabled");
+					}
+				}
+				/*******end伺服端若判斷為是一對一對話時，會有回傳參數CNT，讓開啟的視窗顏色會是紫色*********/
+
+				var right = Number(sessionStorage.getItem("marginRight"));
+				if(right > 1220 || right <= 0){
+					console.log("超過邊界了openChatRoom");
+					right = 350;
+				}
+				console.log("訊息來時，但div尚未存在:"+right);
+				//設定對話視窗產生的位置
+				$("#"+openChatRoomID+"").css("right",right);
+				
+				sessionStorage.setItem("marginRight",right+290);
+				sessionStorage.setItem(openChatRoomID,$("div.input_chatContainer_select[value='"+openChatRoomID+"']").html());
+				
+				console.log("歷史訊息append1111111111111");
+			}else if(msgType.trim() == "history"){
+				var history_jsonObject = JSON.parse(jsonObj.HISTORYMSG);
+
+				for (i in history_jsonObject) {	
+					openChatRoomID = history_jsonObject[i].TO_CHATROOMID;
+					msgTime = history_jsonObject[i].TIME;
+					msgContent = history_jsonObject[i].MSG;
+					
+					//解決圖片部分符號問題
+					msgContent = msgContent.replace(/u003d/g, "=").replace(/u003c/g, "<").replace(/u0027/g, "'").replace(/u003e/g, ">");
+					
+					senderMemId = history_jsonObject[i].MEM_ID;
+					//會把收到的訊息，append到聊天對話內容
+					<%@ include file="/front_end/personal_area/chatContent_div.file" %>
+				}
+					console.log("歷史訊息append2222222222");
+			}else if(msgType.trim() == "open"){
+				if(jsonObj.openMemId.trim() != loginMemId_Now){
+					//問題?? 是否再判斷這個人是否封鎖我???
+					$("#"+jsonObj.openMemId+"status .online_status").html("<i class='fas fa-circle'></i>");
+					return;
+				}else{
+					//我自己連上WS時，會被通知自己登入的訊息，就直接拿出傳過來的所有上線人員，更改成綠燈
+					var onlineArray = jsonObj.online;
+					for(var i = 0 ;i<onlineArray.length ; i++){
+						$("#"+onlineArray[i]+"status .online_status").html("<i class='fas fa-circle'></i>");
+					}
+				}
+				
+			}else if(msgType.trim() == "close"){
+				$("#"+jsonObj.closeMemId+"status .online_status").html("<i class='fas fa-circle' style='color:#ADB5BD'></i>");
+				return;
+			}else if(msgType.trim() == "reject"){
+				openChatRoomID = jsonObj.TO_CHATROOMID;
+				msgContent = jsonObj.MSG;
+				senderMemId = jsonObj.MEM_ID;
+				//會把收到的訊息，append到聊天對話內容
+				<%@ include file="/front_end/personal_area/chatContent_div.file" %>
+				
+				$("#" + openChatRoomID + " .input_chatContext > .chatTextItem_self").last().children().children().css("background-color","white");
+				$("#" + openChatRoomID + " .input_chatContext > .chatTextItem_self").last().children().children().css("color","red");
+				$("#"+openChatRoomID+" .input_chatContext").scrollTop(99999999);//讓聊天內容的捲軸都是在最下面
+				sessionStorage.removeItem(openChatRoomID); //從session移出關閉的聊天對話區塊
+				
+				var right = Number(sessionStorage.getItem("marginRight")); //
+	
+				if(right <= 350){
+					sessionStorage.setItem("marginRight",350);
+				}else{
+					sessionStorage.setItem("marginRight",right-290);
+				}
+														   
+				window.setTimeout(function(){location.href=requestURLForJS},1000);
+				return;
+			}
+
+			$(".input_chatContext").scrollTop(99999999); //讓聊天內容的捲軸都是在最下面
+			console.log("WS的onmessage被觸發了"+msgType);
+			console.log("開啟的聊天對話:"+openChatRoomID);
+			if(openChatRoomID != undefined){
+				console.log("不等於undefined webSocket.onmessage"+openChatRoomID);
+				//聊天內容:被動
+				//console.log($("div.input_chatContainer_select[value='"+openChatRoomID+"']").html());
+				sessionStorage.setItem(openChatRoomID,$("div.input_chatContainer_select[value='"+openChatRoomID+"']").html());
+			}
+			openChatRoomID = null;
+		};
+
+		
+		webSocket.onclose = function(event){
+			webSocketState = event.target.readyState; 
+			//當連線關閉的時候，禁用聊天輸入盒及送出按鈕、更改斷線小圖示
+			$("i.fas.fa-signal").remove();
+			$(".chatContainer>.chatHeader").prepend("&nbsp;<i class='fas fa-ban' style='color:#ff1a1a;'></i>");
+			$(".input_chatContainer input[name='message']").attr("disabled","true");
+			$(".input_chatContainer span.input-group-addon.btn").attr("disabled","true");
+		};
+		
+	}
+	
+	//body_unload，關閉WS
+	$(window).unload(function() {
+		console.log("ws斷線了");
+  		webSocket.close();
+	});
+	
+	/******************************WebSocket結束**************************/
+	
+	
+	
+	
+	
+	
+	
+	</script>
+
+	
+	
+
+

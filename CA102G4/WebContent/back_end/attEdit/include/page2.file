@@ -1,0 +1,44 @@
+<div class="container-fluid">
+  <div class="justify-content-between">
+    <div class="col-12 col-sm-6 col-md-6">
+      <nav aria-label="Page navigation">
+        <ul class="pagination">
+          <%if (rowsPerPage<rowNumber) {%>
+          <%if(pageIndex>=rowsPerPage){%>
+          <li class="page-item"><a class="page-link" href="<%=request.getRequestURI()%>?whichPage=1"><span aria-hidden="true">&laquo;</span></a></li>
+          <li class="page-item"><a class="page-link" href="<%=request.getRequestURI()%>?whichPage=<%=whichPage-1%>">Previous</a></li>
+          <%}%>
+          <% int i=0;%>
+          <c:forEach var="index" begin="1" end="<%= pageIndexArray.length%>">
+          <% i++;%>
+          <%if(whichPage==i){%>
+             <li class="active"><a class="page-link" href="#">${index}</a></li><%;%>
+          <%}else{%>
+             <li class="page-item"><a class="page-link" href="<%=request.getRequestURI()%>?whichPage=${index}">${index}</a></li> <%;%>
+           <%}%>
+          </c:forEach>
+          <%if(pageIndex<pageIndexArray[pageNumber-1]){%>
+            <li class="page-item"><a class="page-link" href="<%=request.getRequestURI()%>?whichPage=<%=whichPage+1%>">Next</a></li>
+            <li class="page-item"><a class="page-link" href="<%=request.getRequestURI()%>?whichPage=<%=pageNumber%>"><span aria-hidden="true">&raquo;</span></a></li>
+            <%}%>
+            <%}%>
+          </ul>
+        </nav>
+      </div>
+      <div class="col-12 col-sm-3 col-sm-offset-3 col-md-3 col-md-offset-3" align="right">
+        <%if (pageNumber>1) {%>
+        <FORM class="form-inline" METHOD="post" ACTION="<%=request.getRequestURI()%>">
+           <select class="custom-select" name="whichPage" style="margin: 20px 0" onchange="this.form.submit()">
+             <%for (int i=1; i<=pageNumber; i++){%>
+             	<%if(whichPage==i){%>
+             		<option selected value="<%=i%>">Page <%=i%></option><%;%>
+             	 <%}else{%>
+             	 	<option value="<%=i%>">Page <%=i%></option><%;%>
+             	 <%}
+            }%>
+           </select>
+        </FORM>
+        <%}%>
+      </div>
+    </div>
+  </div>

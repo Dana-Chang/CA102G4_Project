@@ -1,0 +1,127 @@
+body > form {
+    margin: 0 auto;
+    text-align: center;
+    width: 40%;
+
+}
+#username ,
+body > form > div:nth-child(3) {
+    width: 40%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+body > div.footer > div > div.footer-grids > div > div.footer-grid-heading > h4 ,
+.footer-grid-info ul li a {
+    color: white;
+}
+.footer-grid-info form input[type="submit"] {
+    color: white;
+    border: solid 2px white;
+}
+body > div.footer {
+    background-color: #1b1c1d;
+}
+.copyright p,
+.copyright p a {
+    color: white;
+}
+
+
+.a-divider-break{
+    text-align: center;
+    position: relative;
+    top: 0px;
+    padding-top: 0px;
+    margin-bottom: 5px;
+    line-height: 0;
+    margin-top: 0px;
+}
+
+body > form > div.a-divider.a-divider-break > hr{
+    margin-top: 20px;
+    border-top-width: 1px;
+    width:300px;
+}
+.hr-more {
+    height:20px;  
+    width:40%;   
+    position:absolute;
+    margin-top: 91%;
+    left: 30%;  
+    top: -33px;  
+    vertical-align: middle; 
+    text-align: center; 
+    border-radius: 2px;
+    background-color:white; }
+
+body > div.banner.about-bg > div:nth-child(3) > form > hr{
+    position: relative;
+    margin-top:37.5px;
+    
+}
+
+body > div.banner.about-bg > div.row_login > form > div:nth-child(4) > button:nth-child(1){
+    background-color: white;
+}
+
+body > div.banner.about-bg > div.row_login > form > div:nth-child(4) > button:nth-child(2){
+    background-color: white;
+}
+
+body > form > div:nth-child(8) > a{
+    font-size: 20px;
+}
+body > form > div:nth-child(5){
+    height:60px
+}
+#username{
+    width: 180px;
+    height:50px;
+}
+
+#password{
+    margin-left:23%;
+    width: 180px;
+    height:50px;
+ 
+}
+
+
+body > div.banner.about-bg{
+    height:700px;
+}
+
+body > div.banner.about-bg > div:nth-child(3) > form > div:nth-child(4){
+    margin-left:25% ;
+    margin-bottom: 15px;
+}
+
+body > div.banner.about-bg > div:nth-child(3) > form > h2{
+   margin-left:38% ;
+}
+
+body > div.banner.about-bg > div:nth-child(3) > form > div.form-group.sign-group > input{
+    margin-left:38% ;
+    margin-bottom: 1%;
+}
+body > div.banner.about-bg > div:nth-child(3) > form > div.form-group.sign-group{
+    height:45px;
+}
+
+body > div.banner.about-bg > div.top-banner.about-top-banner > div > div.top-banner-right > ul > li:nth-child(3) > a:hover{
+    color:#fd5c63;
+    -webkit-transition:0.5s all ;
+    
+}
+body > div.banner.about-bg > div.top-banner.about-top-banner > div > div.top-banner-right > ul > li:nth-child(2) > a:hover{
+    color:#fd5c63;
+    -webkit-transition:0.5s all ;
+}
+    
+body > div.banner.about-bg > div.top-banner.about-top-banner > div > div.top-banner-right > ul > li:nth-child(1) > a:hover{
+    color:#fd5c63;
+    -webkit-transition:0.5s all ;
+        
+}
+

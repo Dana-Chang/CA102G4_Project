@@ -1,0 +1,106 @@
+    html {
+        height: 100%;
+    }
+
+    body {
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+     
+    .footer {
+        box-sizing: border-box;
+        bottom: 0px;
+        width: 100%;
+    }
+
+    .container {
+        flex: 1;
+    }
+        
+    /*若Header縮太小時，會顯示menn button */
+    .navbar-default .navbar-toggle{
+        border-color: #ddd;
+        color: white;
+    }
+    /*若Header縮太小時，會顯示menn：buttonfocus hover效果 */
+    .navbar-default .navbar-toggle:focus,
+    .navbar-default .navbar-toggle:hover{
+        color:#333;
+    }
+        
+    /*隔板設定*/
+    body > div.ui.container > div.ui.hidden.divider {
+        display:block !important;
+    }
+        
+    /*調整頁籤字形顏色*/    
+    li a,li a:hover {
+        color: #555;
+    }
+    
+    /*調整頁籤字形顏色：focus hover效果*/
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+        color: firebrick;
+    }
+    .adrow{
+        margin-top: 25px;
+        margin-bottom: 25px;
+        height: auto;
+        padding-bottom: 10px;
+        padding-top: 10px
+     }
+    /*每一個廣告列中的圖片*/
+    .adrow img{
+    	width:100%; 
+        object-fit: cover;
+        height: 300px;
+    }
+    img:hover{
+        opacity: 0.9;
+    }
+        
+    .adTitle{
+        text-align: center;
+        text-shadow:0.5px 0.5px black;
+        margin-bottom: 20px;
+    }
+    
+    /*換頁Button*/
+    button{
+        font-family: inherit;
+        box-shadow:none;
+        border: none;
+    }
+    
+    /*引入semantic Icon*/
+    @font-face {
+      font-family: 'Icons';
+      src: url("../../fonts/icons.eot");
+      src: url("../../fonts/icons.eot?#iefix") format('embedded-opentype'), 
+           url("../../fonts/icons.woff2") format('woff2'), 
+           url("../../fonts/icons.woff") format('woff'), 
+           url("../../fonts/icons.ttf") format('truetype'),
+           url("../../fonts/icons.svg#icons") format('svg');
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-decoration: inherit;
+      text-transform: none;
+    }
+    
+    /*Page Footer*/
+    body > div.footer > div > div.footer-grids > div > div.footer-grid-heading > h4 ,
+    .footer-grid-info ul li a {
+        color: white;
+    }
+    .footer-grid-info form input[type="submit"] {
+        color: white;
+        border: solid 2px white;
+    }
+    body > div.footer {
+        background-color: #1b1c1d;
+    }
+    .copyright p,.copyright p a {
+        color: white;
+    }

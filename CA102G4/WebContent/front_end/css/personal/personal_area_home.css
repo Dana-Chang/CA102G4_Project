@@ -1,0 +1,207 @@
+/*會員個人頁面的topbar*/
+.mem_ind_topbar{
+    height: 25%;
+    width: 100%;
+}
+/*會員個人頁面的所有內容*/
+.mem_ind_content{
+    width: 100%;
+}
+
+/*會員個人頁面上面的banner裡放的圖*/
+.mem_ind_banner>img,
+.mem_ind_banner>img:hover{
+    width: 100%;
+    max-height:400px;
+}
+
+/*會員個人頁面上面的會員資訊*/
+.mem_ind_info{
+    max-height: 130px;
+    width: 100%;
+    position: relative;
+    float: left;
+}
+/*會員個人頁面上面的會員資訊-簡介太長點點點*/
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.mem_ind_img{
+    width: 20%;
+    float: left;
+    left:50px;
+    top: -80px;
+    position: relative;
+}
+.mem_ind_name{
+    width: 80%;
+    float: left;
+    height: 90%;
+}
+.mem_ind_img>img,
+.mem_ind_img>img:hover{
+    border: 5px solid #fff;
+    border-radius: 100px;
+    /*width:80%;
+    height: 90%;*/
+    width: 200px;
+    height: 200px;
+    opacity: 1; 
+    max-height: 100%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.mem_ind_name > p{
+    font-size:2em;
+    padding-left: 40px;
+    padding-top: 3px;
+    margin:0px;
+}
+
+/*頁籤style修改*/
+.nav.nav-tabs{
+    border: 0;
+    width: 100%;
+}
+.nav-tabs > li > a{
+    font-size: 100%;
+    border: none;
+    border-bottom:2px solid #eee;
+}
+.nav-tabs > li.active > a, 
+.nav-tabs > li.active > a:hover, 
+.nav-tabs > li.active > a:focus{
+    border:0;
+    border-color: none;
+    border-bottom: 2px solid #02cbd6;
+    color: #02cbd6;
+    font-size: 100%;
+}
+
+/*個人首頁右半邊新增等按鈕*/
+.add_Div{
+    border:1px solid #eee;
+    width:100%;
+    box-shadow: 2px 2px 5px grey;
+    padding:10px;
+    border-radius:10px;
+}
+.add_Div a:hover,
+.card > a:hover {
+    text-decoration: none;
+    background-color: #eee;
+}
+.adddiv_a{
+    float: left;
+    padding:5px;
+    font-size: 80%;
+    width: 25%;
+    text-align: center;
+}
+.adddiv_a i{
+    font-size:2em;
+    text-align:center;
+}
+
+/*個人首頁左半邊-首頁每一大項(我的照片/我的部落格..等)*/
+.u_ind_item{
+    height:25% !important;
+    width:auto !important;
+}
+.u_title{
+    height:10% !important;
+    margin-bottom: 5px;
+}
+
+/*首頁左半邊的容器*/
+.container.tab-pane.active,
+.container.tab-pane.fade{
+    float:left;
+    width:100%;
+}
+
+/*首頁左半邊的標題*/
+.u_title > strong,
+.u_title > div > span:first-of-type{
+    font-size: 1.5em;
+}
+.u_title span{
+    font-size:100%;
+}
+.u_title>div{
+    float: right !important;
+}
+.u_title > a{
+    text-decoration:none;
+}
+
+/* 首頁左半邊-圖片牆*/
+.mem_ind_item_photo{
+    height:90% !important;
+}
+.flex {
+    display:flex;
+     /* 以下值可修改成 wrap | nowrap | wrap | wrap-reverse*/
+    flex-wrap: wrap;
+/*     height:500px; 為了讓圖片只有一張時，不會照片下面多出空白*/
+}
+.flex>.item {
+    flex:30%;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+/*     height:50%; */
+	height:250px; /*改每張照片圖寫成固定高度*/
+ }
+.flex>.item>a,
+.flex>.item img{
+    height:100%;
+    object-fit: cover;
+    max-width: 100%;
+    min-width: 100%;
+    vertical-align: middle;
+ }
+
+/*首頁左半邊-部落格*/
+.ui.items > .item{
+    border:1px solid #d7d7d7;
+    border-radius: .125rem;
+    height:150px
+}
+.ui.small.image{
+   width:250px; 
+}
+.ui.items > .item > .image > a > img{
+    height: 100%;
+    width: 100%;
+    border-radius: .125rem 0 0 .125rem;
+    object-fit: cover;
+}
+.ui.items > .item:hover{
+    box-shadow: 2px 2px 5px grey;
+}
+.ui.items > .item > .content > .header {
+    margin: 2px 0 0;
+    font-family: inherit;
+    table-layout: fixed;
+    width:100%;
+}
+.ui.items > .item > .content > .description{
+  	color: #666; 
+}
+/*錯誤訊息，標頭會跑掉*/
+#errorModal > div > div > div.modal-header{
+	display: inline-flex;
+    width: 100%;
+}
+
+ /*若搜尋不到文章或圖片時，將會顯示 驚嘆號圖片nothing.png*/
+ .nothing{
+ 	width:50px;
+ 	heigh:50px;
+ }

@@ -1,0 +1,16 @@
+table{
+	width:90% !important;
+	table-layout : fixed;
+	word-break: break-all;
+}
+
+thead{
+    background-color: #eee;
+    color: black;
+}
+
+th,td{
+	vertical-align:middle !important;
+	text-align: center;
+}
+

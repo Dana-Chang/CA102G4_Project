@@ -1,0 +1,113 @@
+table {
+	width: 90% !important;
+	table-layout: fixed;
+	word-wrap: break-word; /*讓英文字要斷掉*/
+}
+
+thead {
+	background-color: #eee;
+	color: black;
+}
+
+th {
+	text-align: center;
+	font-size: 1.5em;
+}
+
+td {
+	vertical-align: middle !important;
+	text-align: center;
+}
+
+td>img {
+	width: 50%;
+}
+
+.tagID,.tagClass,.tagName {
+	color: #333;
+	font-weight: unset !important;
+	font-size: 1.5em;
+}
+
+.updateFormContent, insertContentTitle {
+	margin: .5em;
+}
+
+.ui.insertContent.form {
+	margin: 1em auto;
+}
+
+.insertContentTitle {
+	margin-top: .5em;
+}
+
+.insertFormContent {
+	margin: .5em;
+}
+
+input {
+	border: none;
+	border: 1px solid rgba(34, 36, 38, .15);
+	border-radius: .28571429rem;
+	color: black;
+	width: 100%;
+	height: 100%;
+	font-family: 'Oswald', 'Noto Sans TC', sans-serif !important;
+}
+
+.ui-dialog-title {
+	font-family: 'Oswald', 'Noto Sans TC', sans-serif !important;
+}
+
+.ui-button.ui-corner-all.ui-widget {
+	font-family: 'Oswald', 'Noto Sans TC', sans-serif !important;
+}
+
+.updateContent {
+	font-family: 'Oswald', 'Noto Sans TC', sans-serif !important;
+}
+
+p.btn_id {
+	display: inline;
+	color: #ffffff;
+}
+
+#deleteTagData {
+	text-align: center;
+}
+
+p.item {
+  	display:inline-block;
+  	vertical-align:super;
+	color:black;
+}
+
+a.item,p.item {
+	text-align: center;
+	margin: 0 auto;
+	padding: unset !important;
+}
+
+a.item:hover, a.item:focus, a.item:active {
+	color: royalblue !important;
+}
+
+.ui.menu {
+	font-size: 2em !important;
+	width: 30%;
+	margin: 0 auto !important;
+	text-align: center;
+	font-family:'Oswald','Noto Sans TC', sans-serif;
+}
+
+.page_info {
+	text-align: center;
+	margin: 5px auto;
+}
+
+#insertTagDialog {
+	font-family: 'Oswald', 'Noto Sans TC', sans-serif !important;
+}
+p.item {
+	height:55px;
+}

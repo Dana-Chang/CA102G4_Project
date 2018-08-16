@@ -1,0 +1,49 @@
+      #right-panel {
+        line-height: 30px;
+        padding-left: 10px;
+      }
+
+      #right-panel select, #right-panel input {
+        font-size: 15px;
+      }
+
+      #right-panel select {
+        width: 100%;
+      }
+
+      #right-panel i {
+        font-size: 12px;
+      }
+/*       html, body { */
+/*         height: 100%; */
+/*         margin: 0; */
+/*         padding: 0; */
+/*       } */
+      #map {
+        float: left;
+		width: 63%;
+		height: 31.5rem;
+		-webkit-box-sizing:initial;
+		-moz-box-sizing: initial;
+		box-sizing: initial;
+      }
+      #right-panel {
+        float: right;
+        width: 34%;
+        height: 31.5rem;
+      }
+      .panel {
+        overflow: auto;
+      }
+	
+	#right-panel div,tr,td,th{
+		font-size: 12px !important;
+	}
+	
+	#gmap-all{
+		position: fixed !important;
+		top: 11rem !important;
+		right: 8rem ;
+		width:45rem;
+		bottom: 1.5rem;
+	}
