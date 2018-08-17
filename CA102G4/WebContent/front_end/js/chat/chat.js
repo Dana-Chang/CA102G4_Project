@@ -293,7 +293,7 @@ $(document).ready(function(){
     
   
     //************************聊天對話中，若有傳送圖片，點選圖片時會將照片放大***********************//
-    $("body").on("click",".input_chatContext>div>span img",function(){
+    $("body").on("click",".input_chatContext>div>span>span>img",function(){
     	$("#chatRoomPhoto_Modal .modal-body > img").attr("src",$(this).attr("src"));
     	$("#chatRoomPhoto_Modal").modal({backdrop:'static'});
     });

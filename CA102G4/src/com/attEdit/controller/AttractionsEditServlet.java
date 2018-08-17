@@ -148,7 +148,7 @@ public class AttractionsEditServlet extends HttpServlet{
 					//用tomcat判斷檔案類型
 					String mimeType = getServletContext().getMimeType(fileName);
 					att_picture_trigger = true;
-					if(mimeType.substring(0, mimeType.indexOf("/"))!="image") {
+					if(!"image".equals(mimeType.substring(0, mimeType.indexOf("/")))) {
 						errorMsgs.put("att_picture","(請上傳圖片類型檔案)");
 					}
 				}else {
@@ -195,6 +195,7 @@ public class AttractionsEditServlet extends HttpServlet{
 				attVO.setAtt_lat(att_lat);
 				attVO.setAtt_lon(att_lon);
 				attVO.setCountry(country);
+				attVO.setAdministrative_area(administrative_area);
 				attVO.setAtt_address(att_address);
 				attVO.setAtt_information(att_information);
 				
@@ -209,6 +210,7 @@ public class AttractionsEditServlet extends HttpServlet{
 				/***************************2.開始新增資料***************************************/
 				AttractionsEditService attEditSvc = new AttractionsEditService();
 				//att_picture_trigger (true=有上傳檔案, false=無上傳檔案)
+				System.out.println(att_picture_trigger);
 				byte[] att_picture=null;
 				if(att_picture_trigger) {
 					InputStream in = att_picture_part.getInputStream();

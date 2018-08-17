@@ -1,37 +1,39 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 
-		//抓到對應的聊天對話視窗內的訊息顯示區塊
-		messageArea = $("#" + openChatRoomID + " .input_chatContext");
+	//抓到對應的聊天對話視窗內的訊息顯示區塊
+	messageArea = $("#" + openChatRoomID + " .input_chatContext");
 
 
-		if(senderMemId == "${memberVO.mem_Id}"){
-			messageArea.append("<div class='chatTextItem_self'>"+
-									"<span data-toggle='tooltip' title='"+msgTime+"' data-placement='right'>"+
-										"<span>"+
-											msgContent+
-										"</span>"+
+	if(senderMemId == "${memberVO.mem_Id}"){
+		messageArea.append("<div class='chatTextItem_self'>"+
+								"<span data-toggle='tooltip' title='"+msgTime+"' data-placement='right'>"+
+									"<span>"+
+										msgContent+
 									"</span>"+
-								"</div>");
-			//抓到對應的聊天對話視窗內--顏色
-			var msgColor = $("#" + openChatRoomID + ">.input_chatHeader").css("background-color");
-			console.log("聊天室:"+openChatRoomID+"顏色"+msgColor);
-			$("#" + openChatRoomID + " .input_chatContext > .chatTextItem_self > span> span").css("background-color",msgColor);
-			
-		}else{
-			messageArea.append("<div class='chatTextItem'>"+
-									"<span data-toggle='tooltip' title='"+msgTime+"' data-placement='right'>"+
+								"</span>"+
+							"</div>");
+		//抓到對應的聊天對話視窗內--顏色
+		var msgColor = $("#" + openChatRoomID + ">.input_chatHeader").css("background-color");
+		console.log("聊天室:"+openChatRoomID+"顏色"+msgColor);
+		$("#" + openChatRoomID + " .input_chatContext > .chatTextItem_self > span> span").css("background-color",msgColor);
+		
+	}else{
+		messageArea.append("<div class='chatTextItem'>"+
+								"<span data-toggle='tooltip' title='"+msgTime+"' data-placement='right'>"+
+									"<a href='<%=request.getContextPath()%>/front_end/personal_area/personal_area_public.jsp?uId="+senderMemId+"'>"+
 										"<img class='avatar' style='float:left;' src='<%=request.getContextPath()%>/front_end/readPic?action=member&id="+senderMemId+"'>"+
-										"<span>"+
-											msgContent+
-										"</span>"+
+									"</a>"+
+									"<span>"+
+										msgContent+
 									"</span>"+
-							   "</div>");	
-		}
-		
-		
-		
-		
-		msgTime = null;
-		msgContent = null;
-		senderMemId = null;
+								"</span>"+
+						   "</div>");	
+	}
+	
+	
+	
+	
+	msgTime = null;
+	msgContent = null;
+	senderMemId = null;

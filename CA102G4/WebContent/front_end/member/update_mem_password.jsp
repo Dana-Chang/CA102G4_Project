@@ -30,6 +30,7 @@ if(login_state_temp != null ){
 if( login_state != true){
 	session.setAttribute("location", request.getRequestURI());
 	response.sendRedirect(request.getContextPath()+"/front_end/member/mem_login.jsp");
+	
 	return;
 }
 
@@ -205,7 +206,7 @@ margin-top: 50px;
 			<div class="container">
 				<div class="logo">
 					<h1>
-						<a href="index.html">Travel Maker</a>
+                        <a href="<%=request.getContextPath()%>/front_end/index.jsp">Travel Maker</a>
 					</h1>
 				</div>
 				<div class="top-nav">

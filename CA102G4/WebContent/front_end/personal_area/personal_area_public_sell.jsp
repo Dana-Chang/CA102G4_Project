@@ -450,7 +450,12 @@
                     </div>
                     <div class="mem_ind_name">
                         <p>${otherUser_memVO.mem_Name}
-                        	${otherUser_memVO.mem_Sex == 1 ? "<i class='fas fa-male' style='color:#4E9EE2'></i>" : "<i class='fas fa-female' style='color:#EC7555'></i>"}
+	                      	<c:if test="${otherUser_memVO.mem_Sex == 1}">
+	       						<i class='fas fa-male' style='color:#4E9EE2'></i>
+	      					</c:if>
+	      					<c:if test="${otherUser_memVO.mem_Sex == 2}">
+	       						<i class='fas fa-female' style='color:#EC7555'></i>
+	     					</c:if>
 							<span id='mem_ind_name_friBtn'>
 								<!-- 這邊要放關係確認的結果??? -->
 							</span>

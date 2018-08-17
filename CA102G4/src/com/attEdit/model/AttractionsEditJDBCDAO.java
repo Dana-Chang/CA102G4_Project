@@ -18,6 +18,7 @@ public class AttractionsEditJDBCDAO implements AttractionsEditDAO_interface {
 	private static final String SQL_DELETE = "delete from ATTRACTIONS_EDIT where ATTEDIT_NO = ?";
 	private static final String SQL_QUERY = "select * from ATTRACTIONS_EDIT where ATTEDIT_NO = ?";
 	private static final String SQL_QUERY_ALL = "select * from ATTRACTIONS_EDIT";
+	private static final String SQL_QUERY_PICTURE = "select ATT_PICTURE from ATTRACTIONS where ATT_NO = ?";
 	private static final String SQL_QUERY_ALL_ORDER_DATE = "select * from ATTRACTIONS_EDIT order by ATTEDIT_DATE desc";
 	private static final String SQL_ATT_UPDATE = "update ATTRACTIONS set "
 			+ "ATT_NAME = ?,ATT_LAT = ?,ATT_LON = ?,COUNTRY = ?,ADMINISTRATIVE_AREA = ?,ATT_INFORMATION = ?,ATT_PICTURE = ?,"
@@ -380,5 +381,47 @@ public class AttractionsEditJDBCDAO implements AttractionsEditDAO_interface {
 			}
 		}
 		return updateCount;
+	}
+	
+	public byte[] getAttPicture(String attEdit_no) {
+		byte[] att_picture = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = DriverManager.getConnection(URL, USER, PASSWORD);
+			pstmt = con.prepareStatement(SQL_QUERY_PICTURE);
+			pstmt.setString(1, attEdit_no);
+
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				att_picture = rs.getBytes("ATT_PICTURE");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return att_picture;
 	}
 }

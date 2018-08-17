@@ -9,6 +9,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.sql.DataSource;
 
+import com.attEdit.model.AttractionsEditService;
 import com.attractions.model.*;
 
 public class GatPicture extends HttpServlet {
@@ -81,6 +82,22 @@ public class GatPicture extends HttpServlet {
 //				}
 //				rs.close();
 //				stmt.close();
+			} catch (Exception e) {
+				InputStream in = getServletContext().getResourceAsStream("/front_end/images/all/8.jpg");
+				byte[] buf = new byte[in.available()];
+				in.read(buf);
+				out.write(buf);
+				in.close();
+			}
+		}
+		
+		if("attEdit_no".equals(reqStr)) {
+			try {
+				String reqPara = req.getParameter("attEdit_no").trim();
+				AttractionsEditService attEditSvc = new AttractionsEditService();
+				BufferedOutputStream bf = new BufferedOutputStream(out,8192);
+				bf.write(attEditSvc.getPicture(reqPara));
+				
 			} catch (Exception e) {
 				InputStream in = getServletContext().getResourceAsStream("/front_end/images/all/8.jpg");
 				byte[] buf = new byte[in.available()];

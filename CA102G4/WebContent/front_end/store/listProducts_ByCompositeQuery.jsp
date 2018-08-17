@@ -43,7 +43,7 @@
 	}
 	pageContext.setAttribute("total_items",total_items);
 	
-	List<ProductVO> list2 = (List<ProductVO>)request.getAttribute("list");
+	List<ProductVO> list2 = (List<ProductVO>)session.getAttribute("queryList");
   List<ProductVO> list = new ArrayList<ProductVO>();
     int maxPrice = 0;
     for(int i = 0 ;i<list2.size();i++){

@@ -10,4 +10,5 @@ public interface AttractionsEditDAO_interface {
 	public List<AttractionsEditVO> getAll();
 	public List<AttractionsEditVO> getAllOrderByDate();
 	public int att_update(AttractionsEditVO attEditVO);
+	public byte[] getAttPicture(String attEdit_no);
 }

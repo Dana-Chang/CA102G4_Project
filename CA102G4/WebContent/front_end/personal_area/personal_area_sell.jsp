@@ -8,27 +8,35 @@
 <%@ page import="com.ord.model.*"%>
 <%@ page import="com.orderDetails.model.*"%>
 <%
-	//確認登錄狀態
-	MemberVO memberVO = (MemberVO) request.getAttribute("memberVO"); 
-	if(memberVO == null){
-		memberVO = (MemberVO)session.getAttribute("memberVO");
-	}
-	 
-	boolean login_state = false;   
-		Object login_state_temp = session.getAttribute("login_state");
-		if(login_state_temp!=null){
-		login_state=(boolean)login_state_temp;
-		}
+	MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+	String login,logout;
+	if(memberVO != null){		
+		login = "display:none;";
+		logout = "display:'';";
+	}else{
+		login = "display:'';";
+		logout = "display:none;";
+	}	
 	
-		if(login_state!=true){
+	boolean login_state = false ;
+	Object login_state_temp = session.getAttribute("login_state");
+	
+	//確認登錄狀態
+	if(login_state_temp != null ){
+		login_state= (boolean) login_state_temp ;
+	}
+	
+	//若登入狀態為不是true，紀錄當前頁面並重導到登入畫面。
+	if( login_state != true){
 		session.setAttribute("location", request.getRequestURI());
-	 	response.sendRedirect("/CA102G4/front_end/member/mem_login.jsp");
-	 	return;
-	 }
-		
+		response.sendRedirect(request.getContextPath()+"/front_end/member/mem_login.jsp");
+		return;
+	}
+	
+	
 	/***************取出登入者會員資訊******************/
 	String memId = ((MemberVO)session.getAttribute("memberVO")).getMem_Id();
-	
+		
 	//為了join(寫法有servlet3.0限制)
 	MemberService memSvc = new MemberService();
 	pageContext.setAttribute("memSvc",memSvc); 
@@ -308,12 +316,26 @@
                     </ul>
                 </div>
                 <div class="top-banner-right">
-                    <ul>				
-						<li><a href="<%= request.getContextPath()%>/front_end/member/member.do?action=logout"><span class=" top_banner"><i class=" fas fa-sign-out-alt" aria-hidden="true"></i></span></a></li>
-						<li><a class="top_banner" href="<%=request.getContextPath()%>/front_end/personal_area_home.html"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-						<li><a class="top_banner" href="<%=request.getContextPath()%>/front_end/store/store_cart.jsp"><i class="fa fa-shopping-cart shopping-cart" aria-hidden="true"></i><span class="badge">${total_items}</span></a></li>
+                	<ul>
+                        <li>
+	                      	 <!-- 判斷是否登入，若有登入將會出現登出按鈕 -->
+	                         <c:choose>
+	                          <c:when test="<%=login_state %>">
+	                           	<a href="<%= request.getContextPath()%>/front_end/member/member.do?action=logout"><span class=" top_banner"><i class=" fas fa-sign-out-alt" aria-hidden="true"></i></span></a>
+	                          </c:when>
+	                          <c:otherwise>
+	                           	<a href="<%= request.getContextPath()%>/front_end/member/mem_login.jsp"><span class="top_banner"><i class=" fa fa-user" aria-hidden="true"></i></span></a>
+	                          </c:otherwise>
+	                         </c:choose>
+	                     </li>
+	                    <li style="<%= logout %>"><a class="top_banner" href="<%=request.getContextPath()%>/front_end/personal_area/personal_area_home.jsp"><i class="fa fa-user" aria-hidden="true"></i></a></li>          	
+                        <li>
+							<a class="top_banner" href="<%=request.getContextPath()%>/front_end/store/store_cart.jsp">
+								<i class="fa fa-shopping-cart shopping-cart" aria-hidden="true"></i><span class="badge">${total_items}</span>
+							</a>
+						</li>
                         <li><a class="top_banner" href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-					</ul>
+                    </ul>
                 </div>
                 <div class="clearfix"> </div>
             </div>
@@ -386,7 +408,14 @@
                     <img src="<%=request.getContextPath()%>/front_end/readPic?action=member&id=${memberVO.mem_Id}">
                 </div>
                 <div class="mem_ind_name">
-                    <p>${memberVO.mem_Name}</p>
+                    <p>${memberVO.mem_Name}
+                    	<c:if test="${memberVO.mem_Sex == 1}">
+       						<i class='fas fa-male' style='color:#4E9EE2'></i>
+      					</c:if>
+      					<c:if test="${memberVO.mem_Sex == 2}">
+       						<i class='fas fa-female' style='color:#EC7555'></i>
+     					</c:if>
+                    </p>
                     <p class="text-truncate" style="font-size:0.9em;padding-top:10px;max-height:110px">
 					   ${memberVO.mem_Profile}
                     </p>
@@ -396,39 +425,39 @@
         <!--會員個人頁面-首頁內容-->
         <div class="mem_ind_content">
           <!-- 頁籤項目 -->
-          <ul class="nav nav-tabs" role="tablist">
+         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
               <a href="<%=request.getContextPath()%>/front_end/personal_area/personal_area_home.jsp">
                   <i class="fas fa-home"></i>首頁
               </a>
             </li>
             <li class="nav-item">
-              <a href="<%=request.getContextPath()%>/front_end/personal_area/personal_area_friend.html">
+              <a href="<%=request.getContextPath()%>/front_end/personal_area/personal_area_friend.jsp">
                   <i class="fas fa-user-friends"></i>好友
               </a>
             </li>
             <li class="nav-item">
-              <a href="personal_area_blog.html">
+              <a href="<%=request.getContextPath()%>/blog.do?action=myBlog&mem_id=${memberVO.mem_Id}">
                   <i class="fab fa-blogger"></i>旅遊記
               </a>
             </li>
             <li class="nav-item">
-              <a href="#trip">
+              <a href="<%=request.getContextPath()%>/front_end/trip/personal_area_trip.jsp">
                   <i class="fas fa-map"></i>行程
               </a>
             </li>
             <li class="nav-item">
-              <a href="#together">
+              <a href="<%=request.getContextPath()%>/front_end/grp/personal_area_grp.jsp">
                   <i class="fas fa-bullhorn"></i>揪團
               </a>
             </li>
             <li class="nav-item">
-              <a href="#question">
+              <a href="<%=request.getContextPath()%>/front_end/personal/personal_area_question.jsp">
                   <i class="question circle icon"></i>問答
               </a>
             </li>
             <li class="nav-item">
-              <a href="#gallery">
+              <a href="<%=request.getContextPath()%>/front_end/personal_area/personal_area_photoWall.jsp">
                   <i class="image icon"></i>相片
               </a>
             </li>
@@ -446,7 +475,7 @@
             </li>
 
             <li class="nav-item" style="float: right">
-              <a href="<%=request.getContextPath()%>/front_end/member/member.do?action=getOne_For_Display&mem_Id=${memberVO.mem_Id}">
+              <a href="<%=request.getContextPath()%>/front_end/member/update_mem_profile.jsp">
                   <i class="cog icon"></i>設置
               </a>
             </li>

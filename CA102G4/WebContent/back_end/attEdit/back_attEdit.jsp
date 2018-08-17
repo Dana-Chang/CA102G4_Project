@@ -9,22 +9,25 @@
 <%@ page import="java.util.*"%>
  
 <%
-	AdminVO adminVO = (AdminVO) session.getAttribute("adminVO");
-	if (adminVO == null) {
-		adminVO = (AdminVO) session.getAttribute("adminVO");
-	}
+//**********************管理者登入身分驗證********************************//
+AdminVO adminVO = (AdminVO)session.getAttribute("adminVO");
+if(adminVO == null){
+	adminVO = (AdminVO)session.getAttribute("adminVO");
+}
 
-	boolean login_state = false;
-	Object login_state_temp = session.getAttribute("login_state");
-	if (login_state_temp != null) {
-		login_state = (boolean) login_state_temp;
-	}
+boolean login_state_backEnd = false;
+Object login_state_temp = session.getAttribute("login_state_backEnd");
+if(login_state_temp!=null){
+	login_state_backEnd=(boolean)login_state_temp;
+}
 
-	if (login_state != true) {
-		session.setAttribute("location_Backend", request.getRequestURI());
-		 response.sendRedirect(request.getContextPath()+"/back_end/admin/back_login.jsp");
-		return;
-	}
+if(login_state_backEnd!=true){
+	session.setAttribute("location_Backend",request.getRequestURI());
+	response.sendRedirect(request.getContextPath()+"/back_end/admin/back_login.jsp");
+	return;
+}
+//**********************管理者登入身分驗證********************************//
+	
 	AttractionsEditService attEditSvc = new AttractionsEditService();
 	List<AttractionsEditVO> list = attEditSvc.getAllOrderByDate();
 	pageContext.setAttribute("list", list);
@@ -182,21 +185,25 @@
 		<!-- Page Content  -->
 		<div id="content">
 
-			<nav class="navbar">
-				<!--navbar-expand-lg navbar-light bg-light-->
-				<div class="container-fluid">
-					<!--側邊欄按鈕-->
-					<button type="button" id="sidebarCollapse" class="btn btn-info">
-						<i class="fas fa-align-left"></i>
-					</button>
-					<span style="float: right">
-					<span style="font-size:1.5em;margin-right:10px;vertical-align:sub;">Welcome！${adminVO.admin_Name}</span>
-						<%= (login_state)? 
-                        	"<a href=\"/CA102G4/admin.do?action=logout\"><span class=\"btn btn-info\">登出<i class=\" fas fa-sign-out-alt\" aria-hidden=\"true\"></i></span></a>"
-                        	:"<a href=\"/CA102G4/back_login.jsp\"><span class=\"btn btn-info\">登入<i class=\" fas fa-sign-out-alt\" aria-hidden=\"true\"></i></span></a>"%>
-					</span>
-				</div>
-			</nav>
+			 <nav class="navbar">
+                    <div class="container-fluid">
+                        <!--側邊欄按鈕-->
+                        <button type="button" id="sidebarCollapse" class="btn btn-info">
+                            <i class="fas fa-align-left"></i>
+                        </button>
+                        <span style="float: right">
+                        	<span style="font-size:1.5em;margin-right:10px;vertical-align:sub;">Welcome！${adminVO.admin_Name}</span>
+	                        <c:choose>
+	                          <c:when test="<%=login_state_backEnd %>">
+	                           <a href="<%= request.getContextPath()%>/admin.do?action=logout"><span class=" top_banner btn btn-info"><i class=" fas fa-sign-out-alt" aria-hidden="true"></i></span></a>
+	                          </c:when>
+	                          <c:otherwise>
+	                           <a href="<%= request.getContextPath()%>/admin_login.jsp"><span class="top_banner btn btn-info"><i class=" fa fa-user" aria-hidden="true"></i></span></a>
+	                          </c:otherwise>
+	                        </c:choose>
+                        </span>
+                    </div>
+                </nav>
 
 			<div class="row">
 				<div class="col-lg-12">

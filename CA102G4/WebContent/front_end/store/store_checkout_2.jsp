@@ -60,7 +60,7 @@
 
 String storeName = (String)request.getAttribute("storeName");
 String addr = (String)request.getAttribute("addr");
-Integer shipMethod = (Integer)request.getAttribute("shipMethod");
+Integer shipMethod = (Integer)session.getAttribute("shipMethod");
 String productIdListStr = (String)request.getAttribute("productIdListStr");
 String sellerListStr = (String)request.getAttribute("sellerListStr");
 //給結帳按鈕用的token

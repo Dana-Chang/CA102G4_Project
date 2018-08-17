@@ -8,24 +8,32 @@
 <%@ page import="com.ord.model.*"%>
 <%@ page import="com.orderDetails.model.*"%>
 <%
-	//確認登錄狀態
-	MemberVO memberVO = (MemberVO) request.getAttribute("memberVO"); 
-	if(memberVO == null){
-		memberVO = (MemberVO)session.getAttribute("memberVO");
-	}
-	 
-	boolean login_state = false;   
-		Object login_state_temp = session.getAttribute("login_state");
-		if(login_state_temp!=null){
-		login_state=(boolean)login_state_temp;
-		}
+	MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+	String login,logout;
+	if(memberVO != null){		
+		login = "display:none;";
+		logout = "display:'';";
+	}else{
+		login = "display:'';";
+		logout = "display:none;";
+	}	
 	
-		if(login_state!=true){
+	boolean login_state = false ;
+	Object login_state_temp = session.getAttribute("login_state");
+	
+	//確認登錄狀態
+	if(login_state_temp != null ){
+		login_state= (boolean) login_state_temp ;
+	}
+	
+	//若登入狀態為不是true，紀錄當前頁面並重導到登入畫面。
+	if( login_state != true){
 		session.setAttribute("location", request.getRequestURI());
-	 	response.sendRedirect("/CA102G4/front_end/member/mem_login.jsp");
-	 	return;
-	 }
-
+		response.sendRedirect(request.getContextPath()+"/front_end/member/mem_login.jsp");
+		return;
+	}
+	
+	
 	/***************取出登入者會員資訊******************/
 	String memId = ((MemberVO)session.getAttribute("memberVO")).getMem_Id();
 	pageContext.setAttribute("memId",memId);
@@ -334,12 +342,26 @@
                     </ul>
                 </div>
                 <div class="top-banner-right">
-                  	<ul>				
-						<li><a href="<%= request.getContextPath()%>/front_end/member/member.do?action=logout"><span class=" top_banner"><i class=" fas fa-sign-out-alt" aria-hidden="true"></i></span></a></li>
-						<li><a class="top_banner" href="<%=request.getContextPath()%>/front_end/personal_area_home.html"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-						<li><a class="top_banner" href="<%=request.getContextPath()%>/front_end/store/store_cart.jsp"><i class="fa fa-shopping-cart shopping-cart" aria-hidden="true"></i><span class="badge">${total_items}</span></a></li>
+                  <ul>
+                        <li>
+	                      	 <!-- 判斷是否登入，若有登入將會出現登出按鈕 -->
+	                         <c:choose>
+	                          <c:when test="<%=login_state %>">
+	                           	<a href="<%= request.getContextPath()%>/front_end/member/member.do?action=logout"><span class=" top_banner"><i class=" fas fa-sign-out-alt" aria-hidden="true"></i></span></a>
+	                          </c:when>
+	                          <c:otherwise>
+	                           	<a href="<%= request.getContextPath()%>/front_end/member/mem_login.jsp"><span class="top_banner"><i class=" fa fa-user" aria-hidden="true"></i></span></a>
+	                          </c:otherwise>
+	                         </c:choose>
+	                     </li>
+	                    <li style="<%= logout %>"><a class="top_banner" href="<%=request.getContextPath()%>/front_end/personal_area/personal_area_home.jsp"><i class="fa fa-user" aria-hidden="true"></i></a></li>          	
+                        <li>
+							<a class="top_banner" href="<%=request.getContextPath()%>/front_end/store/store_cart.jsp">
+								<i class="fa fa-shopping-cart shopping-cart" aria-hidden="true"></i><span class="badge">${total_items}</span>
+							</a>
+						</li>
                         <li><a class="top_banner" href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-					</ul>
+                    </ul>
                 </div>
                 <div class="clearfix"> </div>
             </div>
@@ -348,7 +370,7 @@
             <div class="container">
                 <div class="logo">
                     <h1>
-                        <a href="index.html">Travel Maker</a>
+                        <a href="<%=request.getContextPath()%>/front_end/index.jsp">Travel Maker</a>
                     </h1>
                 </div>
                 <div class="top-nav">
@@ -412,7 +434,14 @@
                     <img src="<%=request.getContextPath()%>/front_end/readPic?action=member&id=${memberVO.mem_Id}">
                 </div>
                 <div class="mem_ind_name">
-                    <p>${memberVO.mem_Name}</p>
+                    <p>${memberVO.mem_Name}
+                    	<c:if test="${memberVO.mem_Sex == 1}">
+       						<i class='fas fa-male' style='color:#4E9EE2'></i>
+      					</c:if>
+      					<c:if test="${memberVO.mem_Sex == 2}">
+       						<i class='fas fa-female' style='color:#EC7555'></i>
+     					</c:if>
+                    </p>
                     <p class="text-truncate" style="font-size:0.9em;padding-top:10px;max-height:110px">
 					   ${memberVO.mem_Profile}
                     </p>
@@ -481,7 +510,7 @@
           <!-- 頁籤項目-購買管理內容 -->
           <div class="tab-content" style="float:left;width:75%">
             <!--首頁左半邊-購買管理-->
-            <div id="fri" class="container tab-pane active">
+            <div id="#" class="container tab-pane active">
                 <div class="u_title">
                     <strong>我的購買</strong>
                 </div>

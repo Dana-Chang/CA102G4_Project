@@ -7,29 +7,31 @@
 <%@ page import="com.shopping.model.*"%>
 
 <%
+	
 	//確認登錄狀態
-		MemberVO memberVO = (MemberVO) request.getAttribute("memberVO"); 
-		if(memberVO == null){
-			memberVO = (MemberVO)session.getAttribute("memberVO");
-		}
-		
-		boolean login_state = false;   
-			Object login_state_temp = session.getAttribute("login_state");
-			if(login_state_temp!=null){
-			login_state=(boolean)login_state_temp;
-			} 
-		
-			if(login_state!=true){
-			session.setAttribute("location", request.getRequestURI());
-		 	response.sendRedirect("/CA102G4/front_end/member/mem_login.jsp");
-		 	return;
+	 MemberVO memberVO = (MemberVO)session.getAttribute("memberVO");
+	String login,logout;
+	if(memberVO != null){		
+		login = "display:none;";
+		logout = "display:'';";
+	}else{
+		login = "display:'';";
+		logout = "display:none;";
 		 }
-
+	
+	boolean login_state = false;
+	Object login_state_temp = session.getAttribute("login_state");
+	if(login_state_temp!=null){
+		login_state=(boolean)login_state_temp;
+	}
+	
+	pageContext.setAttribute("login_state",login_state);
+	
 	//若登入狀態為是true
 	/***************取出登入者會員資訊******************/
-	if (login_state == true) {
-		String memId = ((MemberVO) session.getAttribute("memberVO")).getMem_Id();
-		pageContext.setAttribute("memId", memId);
+	if( login_state == true){
+		String memId = ((MemberVO)session.getAttribute("memberVO")).getMem_Id();
+		pageContext.setAttribute("memId",memId);
 	}
 
 	//為了join(寫法有servlet3.0限制)
@@ -257,12 +259,26 @@
 					</ul>
 				</div>
 				<div class="top-banner-right">
-					<ul>				
-						<li><a href="<%= request.getContextPath()%>/front_end/member/member.do?action=logout"><span class=" top_banner"><i class=" fas fa-sign-out-alt" aria-hidden="true"></i></span></a></li>
-						<li><a class="top_banner" href="<%=request.getContextPath()%>/front_end/personal_area_home.html"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-						<li><a class="top_banner" href="<%=request.getContextPath()%>/front_end/store/store_cart.jsp"><i class="fa fa-shopping-cart shopping-cart" aria-hidden="true"></i><span class="badge">${total_items}</span></a></li>
+				 <ul>
+                        <li>
+	                      	 <!-- 判斷是否登入，若有登入將會出現登出按鈕 -->
+	                         <c:choose>
+	                          <c:when test="<%=login_state %>">
+	                           	<a href="<%= request.getContextPath()%>/front_end/member/member.do?action=logout"><span class=" top_banner"><i class=" fas fa-sign-out-alt" aria-hidden="true"></i></span></a>
+	                          </c:when>
+	                          <c:otherwise>
+	                           	<a href="<%= request.getContextPath()%>/front_end/member/mem_login.jsp"><span class="top_banner"><i class=" fa fa-user" aria-hidden="true"></i></span></a>
+	                          </c:otherwise>
+	                         </c:choose>
+	                    </li>
+	                    <li style="<%= logout %>"><a class="top_banner" href="<%=request.getContextPath()%>/front_end/personal_area/personal_area_home.jsp"><i class="fa fa-user" aria-hidden="true"></i></a></li>          	
+                        <li>
+							<a class="top_banner" href="<%=request.getContextPath()%>/front_end/store/store_cart.jsp">
+								<i class="fa fa-shopping-cart shopping-cart" aria-hidden="true"></i><span class="badge">${total_items}</span>
+							</a>
+						</li>
                         <li><a class="top_banner" href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-					</ul>
+                    </ul>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -364,7 +380,7 @@
 							<div class="p-b-50">
 								<!-- 賣家名稱 -->
 								<div class="cart-store-header">
-									<i class="fas fa-store-alt p-l-20"></i><a href="#"
+									<i class="fas fa-store-alt p-l-20"></i><a href="<%=request.getContextPath()%>/front_end/personal_area/personal_area_public_sell.jsp?uId=${sellerId}"
 										class="s-text3 p-l-10">${memSvc.getOneMember(sellerId).mem_Name}</a>
 								</div>
 								<!-- //賣家名稱 end -->

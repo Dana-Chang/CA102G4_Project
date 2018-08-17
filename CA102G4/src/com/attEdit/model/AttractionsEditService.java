@@ -50,4 +50,8 @@ public class AttractionsEditService {
 	public int delete(String attEdit_no) {
 		return dao.delete(attEdit_no);
 	}
+	
+	public byte[] getPicture(String attEdit_no) {
+		return dao.getAttPicture(attEdit_no);
+	}
 }

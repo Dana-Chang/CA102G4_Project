@@ -368,7 +368,9 @@ public class ProductServlet extends HttpServlet {
 				
 				/***************************2.開始刪除資料***************************************/
 				ProductService productSvc = new ProductService();
-				productSvc.deleteProduct(product_id);
+				ProductVO productVO = productSvc.getOneProduct(product_id);
+				productVO.setProduct_status(4);
+				productSvc.updateProduct(productVO);
 	
 				/***************************其他可能的錯誤處理**********************************/
 			} catch (Exception e) {
@@ -729,7 +731,7 @@ public class ProductServlet extends HttpServlet {
 				List<ProductVO> list  = prodSvc.getAll(map);
 				
 				/***************************3.查詢完成,準備轉交(Send the Success view)************/
-				req.setAttribute("list", list); // 資料庫取出的list物件,存入request
+				session.setAttribute("queryList", list); // 資料庫取出的list物件,存入request
 				if(PRODUCT_CATEGORY_ID != null) {
 					req.setAttribute("PRODUCT_CATEGORY_ID", PRODUCT_CATEGORY_ID);
 				}

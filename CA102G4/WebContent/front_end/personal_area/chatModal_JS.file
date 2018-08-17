@@ -216,13 +216,39 @@
           			<button type="button" class="btn" data-dismiss="modal">x</button> 
           		</div>
 	            <div class="modal-body" style="text-align:center;">
-	            	<img id="photoModal">         
+	            	<img id="photoModal" style="width:auto;max-width:500px">         
 	            </div>
           </div>
           <!-- Modal 顯示圖片視窗content END-->
         </div>
       </div> 
 	<!-- 顯示圖片的Modal END -->
+
+	<!-- 顯示通知的Modal Start -->   
+    <div class="modal fade " id="notice_Modal" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal 通知視窗content start-->
+          <div class="modal-content" >
+          	    <div class="modal-header">
+	              <h4 class="modal-title">
+	              	<!-- 這邊要放通知的標題 -->
+	              </h4>
+	            </div>
+	            <div class="modal-body">
+	                <!--這裡塞通知內容或連結-->              
+	            </div>
+	            
+	            <div class="modal-footer"> 
+	              <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+	            </div>
+          </div>
+          <!-- Modal 通知視窗content END-->
+        </div>
+      </div> 
+	<!-- 顯示通知的Modal END -->
+	
+
+
 
     <script>
  
@@ -286,8 +312,9 @@
 			$("div.input_chatContainer_select[value='"+chatRoom_id+"'] .input_chatHeader").css("background-color","#AF9CDA");
 		}
 		if(chatRoom_Name.toString().trim().indexOf('聊聊') != -1){
-			$("div.input_chatContainer_select[value='"+chatRoom_id+"'] .input_chatHeader>#chatJoinList_span").css("display","none");
-			$("div.input_chatContainer_select[value='"+chatRoom_id+"'] .input_chatHeader>#chatJoinList_span").css("disabled","disabled");
+			//最後還是決定，讓聊聊的對方退出聊天
+			//$("div.input_chatContainer_select[value='"+chatRoom_id+"'] .input_chatHeader>#chatJoinList_span").css("display","none");
+			//$("div.input_chatContainer_select[value='"+chatRoom_id+"'] .input_chatHeader>#chatJoinList_span").css("disabled","disabled");
 			$("div.input_chatContainer_select[value='"+chatRoom_id+"'] .input_chatHeader").css("background-color","#ff5722");
 		}
 		
@@ -321,7 +348,15 @@
 			/****************補通知*********************/
 			var titie = jsonObj.title; //通知才有的
 			if(titie != undefined){
-				alert("會進來通知:"+titie+"-");
+				var link = jsonObj.link;
+				var personal_public_link = "";
+				if(link != undefined){
+					personal_public_link = "<a href='<%=request.getContextPath()%>"+
+											"/front_end/personal_area/personal_area_public.jsp?uId="+jsonObj.sender+"'>請點連結</a>";
+				}
+				$("#notice_Modal .modal-title").text(jsonObj.title);
+				$("#notice_Modal .modal-body").html(jsonObj.message+personal_public_link);
+				$("#notice_Modal").modal();
 				return;
 			}
 			/****************補通知********************/

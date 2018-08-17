@@ -275,7 +275,12 @@
                 </div>
                 <div class="mem_ind_name">
                     <p>${memberVO.mem_Name}
-                     ${memberVO.mem_Sex == 1 ? "<i class='fas fa-male' style='color:#4E9EE2'></i>" : "<i class='fas fa-female' style='color:#EC7555'></i>"} 
+                    	<c:if test="${memberVO.mem_Sex == 1}">
+       						<i class='fas fa-male' style='color:#4E9EE2'></i>
+      					</c:if>
+      					<c:if test="${memberVO.mem_Sex == 2}">
+       						<i class='fas fa-female' style='color:#EC7555'></i>
+     					</c:if>
                     </p> 
                     <p class="text-truncate" style="font-size:0.9em;padding-top:10px;max-height:110px">
         ${memberVO.mem_Profile}

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	int rowPerPage=2;  			//每頁要放的筆數
+	int rowPerPage=5;  			//每頁要放的筆數
 	int totalNumber=0; 			//資料總筆數
 	int pageNumber=0;  			//總頁數
 	int whichPage=1;   			//第幾頁

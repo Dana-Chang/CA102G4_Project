@@ -8,11 +8,11 @@
 <%
 // 	MemberVO memberVO = (MemberVO) session.getAttribute("memberVO"); 
 
-	boolean login_state = false;
-	Object login_state_temp = session.getAttribute("login_state");
-	if(login_state_temp!=null){
-		login_state=(boolean)login_state_temp;
-	}
+// 	boolean login_state = false;
+// 	Object login_state_temp = session.getAttribute("login_state");
+// 	if(login_state_temp!=null){
+// 		login_state=(boolean)login_state_temp;
+// 	}
 	
 // 	String mem_Id = memberVO.getMem_Id();
 
@@ -96,47 +96,7 @@ margin:80px auto;
     
 </style>
     
-<!--  fb  -->
- <!-- FB -->
-    <script>
-        //初始化設定載入Facebook SDK
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = 'https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v3.0&appId=196108454564197';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
 
-        //登入按鈕 //取得授權並登入應用程式
-        function fbLogin() {
-            FB.login(function(response) {
-                statusChangeCallback(response);
-            }, {scope: 'public_profile,email'});
-        }
-        //登出按鈕 //把FB真的登出
-        function fbLogout() {
-            FB.logout(function(response) {
-                statusChangeCallback(response);
-            });
-        }
-        //檢查登入狀態並取得資料
-        function statusChangeCallback(response) {
-            if (response.status === 'connected') {
-                console.log('Facebook已登入')
-                FB.api('/me?fields=id,name,picture,email', function(response) {
-                    document.getElementById('com').innerText='FACEBOOK'
-                    document.getElementById('uid').innerText=response.id
-                    document.getElementById('name').innerText=response.name
-                    document.getElementById('email').innerText=response.email
-                    document.getElementById('picture').src=response.picture.data.url
-                });
-            } else {
-                console.log('Facebook未登入')
-            }
-        }
-        
-    </script>
 </head>
 
 <body>
@@ -154,18 +114,8 @@ margin:80px auto;
                 </div>
                 <div class="top-banner-right">
                     <ul>
-                         <li>
-		                      	 <!-- 判斷是否登入，若有登入將會出現登出按鈕 -->
-		                         <c:choose>
-		                          <c:when test="<%=login_state %>">
-		                           	<a href="<%= request.getContextPath()%>/front_end/member/member.do?action=logout"><span class=" top_banner"><i class=" fas fa-sign-out-alt" aria-hidden="true"></i></span></a>
-		                          </c:when>
-		                          <c:otherwise>
-		                           	<a href="<%= request.getContextPath()%>/front_end/member/mem_login.jsp"><span class="top_banner"><i class=" fa fa-user" aria-hidden="true"></i></span></a>
-		                          </c:otherwise>
-		                         </c:choose>
-		                    </li>
-<%-- 	                    	<li style=""><a class="top_banner" href="<%=request.getContextPath()%>/front_end/personal_area/personal_area_home.jsp"><i class="fa fa-user" aria-hidden="true"></i></a></li>          	 --%>
+
+	                    	<li style=""><a class="top_banner" href="<%=request.getContextPath()%>/front_end/personal_area/personal_area_home.jsp"><i class="fa fa-user" aria-hidden="true"></i></a></li>          	
 							<li><a class="top_banner" href="<%=request.getContextPath()%>/front_end/store/store_cart.jsp"><i class="fa fa-shopping-cart shopping-cart" aria-hidden="true"></i><span class="badge">${total_items}</span></a></li>
 							<li><a class="top_banner" href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
                     </ul>
@@ -210,77 +160,20 @@ margin:80px auto;
 
         <!-- //banner -->
 
-	<%-- 錯誤表列 --%>
-	<c:if test="${not empty errorMsgs}">
-		<font color='red'>請修正以下錯誤:
-			<ul>
-				<c:forEach var="message" items="${errorMsgs}">
-					<li>${message}</li>
-				</c:forEach>
-			</ul>
-		</font>
-	</c:if>
-
         <!-- Start Sign In Form -->
         <div class="row_login">
-            <form method="post" action="<%=request.getContextPath()%>/front_end/member/member.do" class="fh5co-form animate-box" data-animate-effect="fadeIn">
+            <form method="post" action="#" class="fh5co-form animate-box" data-animate-effect="fadeIn">
                 <h2>Welcome</h2>
-                
-                <div class="form-group">
-                    <label id="username" class="sr-only">Email</label>
-                    <input type="text" name="mem_Account" value="" required="required" class="form-control" id="username" placeholder="Email" autocomplete="off" />
-                </div>
-                <div class="form-group">
-                    <label id="password" class="sr-only">Password</label>
-                    <input type="password" name="mem_Password" value="" required="required" class="form-control" id="password" placeholder="Password" autocomplete="off" />
-                </div>
-
-                <div id="modal-setting">
-
-                    <button type="button" data-toggle="modal" data-target="#myModal" style="border:0;">Register</button>
-
-<!--                     <button type="button" data-toggle="modal" data-target="#myModal_foget" style="border:0;">Forgot Password?</button> -->
-
-                    <!--
-            <a href="sign-up.html">
-                <font size="4px">Register</font></a>&nbsp;&nbsp;&nbsp;
-                Forgot Password? -->
-
-                </div>
-
-
-                <div class="form-group sign-group">
-                	<input type="hidden" name="action" value="login">
-                    <input type="submit" value="Sign In" class="btn btn-primary">
-
-                </div>
-
-                <p></p>
-
-                <hr style="border: 0.5px solid gery">
-                <div class="hr-more">New&nbsp;&nbsp;to&nbsp;&nbsp;Travel&nbsp;&nbsp;Maker</div>
-
-                <div class="three-login">
-
-
-                    <button id="btn-fb"  class="ui facebook button btn3" onclick="fbLogin();">
-          <i class="fab fa-facebook-square"></i></button>
-
-         <button id="btn-google" class="ui google button btn3"> 
-           <i class="fab fa-google-plus-square"></i></button>
-
-
-                </div>
-                               
-                <!--
-        <div class="form-group">
-            <a href="sign-up.html">Create your account</a>
-        </div>
--->
-
-
+                	<p style="text-align:center;font-size:18px;color:black;">親愛的會員您好<br>
+                	<p style="text-align:center;font-size:18px;color:black;">感謝您加入<br>
+                	<p style="text-align:center;font-size:18px;color:black;">Travel Maker<br>
+                	<p style="text-align:center;font-size:18px;color:black;">系統已發送「會員密碼」至您的帳號（電子信箱）<br>
+                	<p style="text-align:center;font-size:18px;color:black;">成功登入後，修改成您熟悉的密碼，便利以後的登入<br>
+                	<p style="text-align:center;font-size:18px;color:black;">如果您沒收到，請至垃圾郵件查看。<br>
+                	<p style="text-align:center;font-size:18px;color:red;"><a style="color:red;text-decoration:none;" href="<%= request.getContextPath()%>/front_end/member/mem_login.jsp">請點擊此處回登入頁面</a><br>
+                	
             </form>
-        </div>
+         </div>
     </div>
     <!-- END Sign In Form -->
 
@@ -344,122 +237,7 @@ margin:80px auto;
         </div>
     </div>
 
-    <script>
-		function show() {
-		 var inputs = document.getElementsByTagName('input');
-		 
-		document.form1.mem_Name.value="李柴柴";
-		document.form1.mem_Account.value="ca102g4@gmail.com.tw";
-		document.form1.mem_Password.value="a12345678";
-
-		}
-		
-		
-		function chk(){
-			if(!document.form1.name.value){
-				alert('test!');
-				return false;
-			}else if(!document.form1.modal-password.value){
-				alert('mima ?');
-				return false;
-			}
-		}
-	</script>
-	
-
 </body>
 
 </html>
 
-<!-- 燈箱 Register 開始 -->
-<!-- Modal Register -->
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-    <c:if test="${not empty errorMsgs}">
-	<font style="color:red">請修正以下錯誤:</font>
-	<ul>
-		<c:forEach var="message" items="${errorMsgs}">
-			<li style="color:red">${message.value}</li>
-		</c:forEach>
-	</ul>
-</c:if>
-
-        <!-- Modal Register content-->
-       <div background-color="lightblue;">
-            <form METHOD="post" ACTION="<%=request.getContextPath()%>/front_end/member/member.do" name="form1" class="fh5co-form animate-box-modal" data-animate-effect="fadeIn" onsubmit="return chk();">
-                <h2>Sign Up</h2>
-
-                <div class="form-group">
-                    <label for="name" class="sr-only">Name</label>
-                    <input name="mem_Name" size="45" type="text" class="form-control" id="name" placeholder="name" autocomplete="off">
-                </div>
-                <div class="form-group">
-                    <label for="account" class="sr-only">Account</label>
-                    <input name="mem_Account" size="45" type="text" class="form-control" id="account" placeholder="account" autocomplete="off">
-                </div>
-
-                <div class="form_btn">
-                
-                    </div>
-
-                <div class="form-group">
-                	<input type="hidden" name="action" value="insert" class="btn btn-primary">
-                    <input type="submit" value="Confirm" class="btn btn-primary">
-                    <input type="button" value="Cancel" onclick="javascript:location.href='mem_login.jsp'" class="btn btn-primary" >
-                </div>
-<!--                     <input type="button" onclick="show()" style="background-color:skyblue; float:right; border:0px;"> -->
-            </form>
-            
-        </div>
-        <!-- //Modal Register content-->
-
-    </div>
-
-</div>
-<!-- 燈箱 Register 結束 -->
-
-<!-- 燈箱 Forgot Password  開始 -->
-
-<!-- Modal_foget -->
-<!-- <div class="modal fade" id="myModal_foget" role="dialog"> -->
-<!--     <div class="modal-dialog"> -->
-
-<!--         Modal_foget content -->
-<!--         <div background-color="lightblue;"> -->
-<!--             <form action="#" class="fh5co-form animate-box-modal" data-animate-effect="fadeIn"> -->
-<!--                 <h2>Forgot Password ?</h2> -->
-
-<!--                 <div class="form-group"> -->
-<!--                     <label for="name" class="sr-only">Name</label> -->
-<!--                     <input type="text" class="form-control" id="name" placeholder="Name" autocomplete="off"> -->
-<!--                 </div> -->
-<!--                 <div class="form-group"> -->
-<!--                     <label for="email" class="sr-only">Email</label> -->
-<!--                     <input type="email" class="form-control" id="email" placeholder="Email" autocomplete="off"> -->
-<!--                 </div> -->
-
-<!--                 <div class="form-group"> -->
-<!--                     <label for="verification code" class="sr-only">verification code</label> -->
-<!--                     <input type="verification code" class="form-control" id="verification code" placeholder="verification code" autocomplete="off"> -->
-<!--                 </div> -->
-                
-<!--                 <div class=""> -->
-                
-<!--                     <input type="submit" value="Send" class="btn btn-primary"> -->
-                
-<!--                 </div> -->
-
-
-<!--                 <div class="form-group"> -->
-<!--                     <input type="button" value="Cancel" class="btn btn-primary" onclick="history.back()"> -->
-<!--                     <input type="submit" value="Confirm" class="btn btn-primary"> -->
-<!--                 </div> -->
-<!--             </form> -->
-<!--         </div> -->
-<!--         //Modal_foget content -->
-
-<!--     </div> -->
-
-<!-- </div> -->
-<!-- 燈箱 Forgot Password  結束 -->

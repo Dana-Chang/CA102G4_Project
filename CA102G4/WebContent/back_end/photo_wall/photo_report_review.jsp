@@ -11,20 +11,20 @@
 <html>
 
 <%
-	AdminVO adminVO = (AdminVO) session.getAttribute("adminVO");
-	if (adminVO == null) {
-		adminVO = (AdminVO) session.getAttribute("adminVO");
+	AdminVO adminVO = (AdminVO)session.getAttribute("adminVO");
+	if(adminVO == null){
+	 adminVO = (AdminVO)session.getAttribute("adminVO");
 	}
-
-	boolean login_state = false;
-	Object login_state_temp = session.getAttribute("login_state");
-	if (login_state_temp != null) {
-		login_state = (boolean) login_state_temp;
+	
+	boolean login_state_backEnd = false;
+	Object login_state_temp = session.getAttribute("login_state_backEnd");
+	if(login_state_temp!=null){
+	 login_state_backEnd=(boolean)login_state_temp;
 	}
-
-	if (login_state != true) {
-		session.setAttribute("location_Backend", "/CA102G4/back_end/back_index.jsp");
-		 response.sendRedirect(request.getContextPath()+"/back_end/admin/back_login.jsp");
+	
+	if(login_state_backEnd!=true){
+	 session.setAttribute("location_Backend", request.getRequestURI());
+	 response.sendRedirect(request.getContextPath()+"/back_end/admin/back_login.jsp");
 	}
 	
 	String photo_No = request.getParameter("photo_No");
@@ -215,7 +215,7 @@
 					</button>
 					<span style="float: right"> 
 					<c:choose>
-							<c:when test="<%=login_state%>">
+							<c:when test="<%=login_state_backEnd%>">
 								<a href="<%=request.getContextPath()%>/admin.do?action=logout"><span
 									class=" top_banner btn btn-info"><i
 										class=" fas fa-sign-out-alt" aria-hidden="true"></i></span></a>

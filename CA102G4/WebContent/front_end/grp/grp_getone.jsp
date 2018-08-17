@@ -177,7 +177,7 @@
             <div class="container">
                 <div class="logo">
                     <h1>
-                        <a href="index.html">Travel Maker</a>
+                        <a href="<%=request.getContextPath()%>/front_end/index.jsp">Travel Maker</a>
                     </h1>
                 </div>
                 <div class="top-nav">

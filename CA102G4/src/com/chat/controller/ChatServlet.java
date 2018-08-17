@@ -95,6 +95,9 @@ public class ChatServlet {
 			if (receiverSession != null && receiverSession.isOpen()) {
 				receiverSession.getAsyncRemote().sendText(message);
 			}
+			Jedis jedis = pool.getResource();
+			jedis.rpush(receiver,message);
+			jedis.close();
 			System.out.println("這是通知:"+message);
 			return;
 		}

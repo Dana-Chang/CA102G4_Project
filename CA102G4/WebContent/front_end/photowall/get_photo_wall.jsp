@@ -32,9 +32,9 @@
  	pageContext.setAttribute("list", list);
  	
  	Photo_tagService photo_tagSvc = new Photo_tagService();
- 	List<Photo_tagVO> list_tag = photo_tagSvc.get_Keyword(request.getParameter("tag_Content"));
+ 	List<Photo_tagVO> list_tag = (List<Photo_tagVO>)request.getAttribute("list"); 
  	pageContext.setAttribute("list_tag", list_tag);
-	
+ 	
 %>
 <%
 	//取得購物車商品數量
@@ -74,6 +74,10 @@
 
     </script>
     <!-- //隱藏iPhone Safari位址列的網頁 -->
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- //JQUERY -->
     
     <!-- Bootstrap -->
 	<link href="<%=request.getContextPath()%>/front_end/css/all/index_bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -84,10 +88,6 @@
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <!-- //font字體 -->
    
-    <!-- JQUERY -->
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <!-- //JQUERY -->
 
     <!-- 套首頁herder和footer css -->
     <link href="<%=request.getContextPath()%>/front_end/css/all/index_style.css" rel="stylesheet" type="text/css" media="all" />
@@ -149,7 +149,7 @@
             <div class="container">
                 <div class="logo">
                     <h1>
-                        <a href="index.html">Travel Maker</a>
+						<a href="<%=request.getContextPath()%>/front_end/index.jsp">Travel Maker</a>
                     </h1>
                 </div>
                 <div class="top-nav">
@@ -219,20 +219,18 @@
     <!-- photowall -->
     <section>
         <div class="container gal-container">
-          <c:forEach var="photo_tagVO" items="${list_tag}">
-           <c:if test="${photo_wallVO.photo_Sta == 1 }">
-            <div class="col-md-4 col-sm-12 co-xs-12 gal-item ">
-                <div class="box">
-                	<a href="<%=request.getContextPath()%>/front_end/photowall/view_photowall.jsp?photo_No=${photo_tagVO.photo_No}">
-          				<img src="data:image/*;base64,${photo_tagVO.encoded}">   
-                	</a>
-                </div>
-            </div> 
-            </c:if>           
+            <c:forEach var="Photo_tagVO" items="${list_tag}">
+	            <c:if test="${Photo_wallService.findByPrimaryKey(Photo_tagVO.photo_No).photo_Sta == 1}">
+		            <div class="col-md-4 col-sm-12 co-xs-12 gal-item ">
+		                <div class="box">
+		                	<a href="<%=request.getContextPath()%>/front_end/photowall/view_photowall.jsp?photo_No=${Photo_tagVO.photo_No}">
+		          				<img src="data:image/*;base64,${Photo_tagVO.encoded}">   
+		                	</a>
+		                </div>
+		            </div>
+		        </c:if>
            </c:forEach>
            </div>
-           
-
     </section>  
     <!-- END Sign In Form -->
 

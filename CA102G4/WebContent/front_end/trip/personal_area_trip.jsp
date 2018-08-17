@@ -28,7 +28,7 @@
 	//取出會員相關資料
 	MemberService memSvc = new MemberService();
 	MemberVO memVO=memSvc.getOneMember((String)memId);//動態從session取得會員ID
-// 	MemberVO memVO=memSvc.getOneMember("M000001");
+//  	MemberVO memVO=memSvc.getOneMember("M000001");
 	pageContext.setAttribute("memvo",memVO);
 	
 	
@@ -262,7 +262,14 @@
                     <img src="<%=request.getContextPath()%>/front_end/readPic?action=member&id=${memvo.mem_Id}">
                 </div>
                 <div class="mem_ind_name">
-                    <p>${memvo.mem_Name}</p>
+                    <p>${memvo.mem_Name}
+                    	<c:if test="${memvo.mem_Sex == 1}">
+       						<i class='fas fa-male' style='color:#4E9EE2'></i>
+      					</c:if>
+      					<c:if test="${memvo.mem_Sex == 2}">
+       						<i class='fas fa-female' style='color:#EC7555'></i>
+     					</c:if>
+                    </p>
                     <p class="text-truncate" style="font-size:0.9em;padding-top:10px;max-height:110px">
 					   ${memvo.mem_Profile}
                     </p>

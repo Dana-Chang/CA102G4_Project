@@ -231,7 +231,7 @@
 										<c:forEach var="prodReportVO" items="${prodReportlist}">
 										
 											<tr id="tr_${prodReportVO.prod_report_product_id}">
-												<td><a href="<%=request.getContextPath()%>/front_end/store/store_product.jsp?prod_id=${prodReportVO.prod_report_product_id}">${prodReportVO.prod_report_product_id}</a></td>
+												<td><a href="<%=request.getContextPath()%>/front_end/store/store_product.jsp?prod_id=${prodReportVO.prod_report_product_id}" target="_blank">${prodReportVO.prod_report_product_id}</a></td>
 												<td>${memSvc.findByPrimaryKey(prodReportVO.prod_report_mem_id).mem_Name}(${prodReportVO.prod_report_mem_id})</td>
 												<td>${prodReportVO.prod_report_reason}</td>
 												<td><fmt:formatDate pattern="MM月dd日  HH:mm" value="${prodReportVO.prod_report_time}" /></td>										
