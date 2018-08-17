@@ -59,10 +59,11 @@
 		
 	
  
-	//若登入狀態為是true
+	//若登入狀態為是true(育萱把memId拿出來，因為我下面程式會用到)
+	String memId = "null";
 	/***************取出登入者會員資訊******************/
 	if( login_state == true){
-		String memId = ((MemberVO)session.getAttribute("memberVO")).getMem_Id();
+		memId = ((MemberVO)session.getAttribute("memberVO")).getMem_Id();
 		pageContext.setAttribute("memId",memId);
 	}
 
@@ -481,7 +482,8 @@
 								</form>
 							</c:if>
 							<c:if test="${productVO.product_mem_id != memId}">
-								<form class="chat p-t-50" action="" method="post" enctype="multipart/form-data">
+							    <!-- 如果不是登入者自己賣的商品時，會出現聊聊跟檢舉按鈕 -->
+								<form class="chat p-t-50" method="post"  onSubmit="return checkIsLogin('${memId}','${productVO.product_mem_id}');">
 									<button type="submit" name="chat-to-seller" class="flex-c-m size1 bg4 hov4 s-text1 trans-0-4 chat-to-seller-btn"><i class="fa fa-comments" aria-hidden="true"></i>聊聊</button>
 								</form>
 								<div class="report p-t-50" style='display:inline;'> 
@@ -741,5 +743,53 @@
 		}
   
 </script>
+
+
+<!--聊聊-->
+<script>
+//還要排除封鎖狀態
+function checkIsLogin(memid,seller){
+
+	if(memid == undefined || memid == "" || memid.trim().lenth == 0){
+		window.location.replace("${pageContext.request.contextPath}/front_end/member/mem_login.jsp");
+		return false;
+	}else if($("#"+seller+"status").val() != undefined){
+		//在判斷目前這個賣家是否已經為好友且無封鎖狀態,就可直接開啟與他人的聊天視窗
+		$("#"+seller+"status").trigger("click");
+		return false;
+	}else if("${friSvc.findRelationship(memId, productVO.getProduct_mem_id()).getFri_Stat()}" == "3"){
+		alert("您已封鎖該位賣家!");
+		return false;
+	}
+	//若我沒封鎖他，也不是好友的話，要去新增聊天對話並開啟聊天對話openChatRoom(chatRoom_id,chatRoom_Name,cnt)
+	$.ajax({
+			url:"/CA102G4/chatRoom.do",
+			type:"POST",
+			data:{action:"addNewCR_seller",meId:memid,sellerId:seller},
+			success:function(data){
+				console.log(data);
+				if(data.toString().trim() == "錯誤：未取到登入者的會員ID。" || data.toString().trim() == "錯誤：未取到好友的會員ID。"
+						|| data.toString().trim() == "錯誤：發生Exception。"){
+					alert("回傳後，發生問題");
+					return;
+				}
+				var jsonObject = JSON.parse(data);
+				openChatRoom(jsonObject.CRID,jsonObject.crName,jsonObject.cnt);
+			},
+			error:function(){
+				alert("失敗,未呼叫到fri.do");
+			}
+			
+	});/**Ajax end**/
+	alert("有登入");
+	return false;
+}
+
+
+		
+
+  
+</script>
+
 </body>
 </html>

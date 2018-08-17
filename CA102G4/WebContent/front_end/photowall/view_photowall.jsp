@@ -69,7 +69,15 @@
 	 System.out.println("cnt="+photo_wallVO.getPhoto_No());		//取得喜歡過的Photo_No
 
 %>
-
+<%
+	//取得購物車商品數量
+	Object total_items_temp = session.getAttribute("total_items");
+	int total_items = 0;
+	if(total_items_temp != null ){
+		total_items= (Integer) total_items_temp;
+	}
+	pageContext.setAttribute("total_items",total_items);
+%>
 <jsp:useBean id="memberSvc" scope="page" class="com.mem.model.MemberService" />
 <jsp:useBean id="photo_tagSvc" scope="page" class="com.photo_tag.model.Photo_tagService" />
 
@@ -307,8 +315,7 @@
                          </li>
                          
                         <li style="<%= logout %>"><a class="top_banner" href="<%=request.getContextPath()%>/front_end/personal_area/personal_area_home.jsp"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                        
-						<li><a class="top_banner" href="<%=request.getContextPath()%>/front_end/store/store_cart.jsp"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+						<li><a class="top_banner" href="<%=request.getContextPath()%>/front_end/store/store_cart.jsp"><i class="fa fa-shopping-cart shopping-cart" aria-hidden="true"></i><span class="badge">${total_items}</span></a></li>
 						<li><a class="top_banner" href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
 					</ul>
 				</div>

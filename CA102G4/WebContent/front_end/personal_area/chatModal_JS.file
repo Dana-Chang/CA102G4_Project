@@ -280,10 +280,15 @@
     	}
     	console.log("判斷是否為一對一聊天："+cnt);
     	//不讓一對一的聊天，有加入更多人的按鈕
-		if(cnt.toString().trim() === '2'){
+		if(cnt.toString().trim() === '2' || chatRoom_Name.toString().trim().indexOf('聊聊') != -1){
 			$("div.input_chatContainer_select[value='"+chatRoom_id+"'] .input_chatHeader>#chat_addFri_span").css("display","none");
 			$("div.input_chatContainer_select[value='"+chatRoom_id+"'] .input_chatHeader>#chat_addFri_span").css("disabled","disabled");
 			$("div.input_chatContainer_select[value='"+chatRoom_id+"'] .input_chatHeader").css("background-color","#AF9CDA");
+		}
+		if(chatRoom_Name.toString().trim().indexOf('聊聊') != -1){
+			$("div.input_chatContainer_select[value='"+chatRoom_id+"'] .input_chatHeader>#chatJoinList_span").css("display","none");
+			$("div.input_chatContainer_select[value='"+chatRoom_id+"'] .input_chatHeader>#chatJoinList_span").css("disabled","disabled");
+			$("div.input_chatContainer_select[value='"+chatRoom_id+"'] .input_chatHeader").css("background-color","#ff5722");
 		}
 		
     	sessionStorage.setItem(chatRoom_id,$("div.input_chatContainer_select[value='"+chatRoom_id+"']").html());

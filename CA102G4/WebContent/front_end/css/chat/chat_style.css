@@ -14,11 +14,11 @@
     
     
     
-    /*��予撠店�摰寡���*/
+    /*聊天對話內容視窗*/
     .input_chatContainer{
        height: 344px;
     }
-    /*��予撠店�摰寡��葬撠�*/
+     /*聊天對話內容視窗縮小*/
     .chatWindow_Content{
         height: 28px;
     }
@@ -69,7 +69,7 @@
         border-radius: 5px 5px 0px 0px;
         
     }
-   /*撱箇�撠店���內獢� */ 
+   	/*建立新對話的提示框 */ 
     .tooltip.fade.top,.tooltip.fade.top.in{
         width: fit-content;
     }
@@ -80,7 +80,7 @@
     height: 2em;
     border-radius: 50%;
     }
-    /*��予��”撠�����撓����*/
+    /*聊天列表小視窗的搜尋輸入盒*/
     .chatFooter>.input-group,
     .chatFooter .form-control ,
     .input_chatFooter>.input-group,
@@ -90,13 +90,13 @@
         border: 0;
     }
     
-    /*��予��”撠������內��憛�*/
+     /*聊天列表小視窗的搜尋圖示區塊*/
     .input-group-addon{
         background-color: white;
         border: 0;
     }
         
-    /*��予��”�憭�*/
+    /*聊天列表放大*/
     .chatWindow{
         height: 344px;
     }
@@ -108,25 +108,25 @@
     .list-group-item:hover{
         background-color:#e3e6e8;
     }
-    /*頛詨��摮�矽�*/
+    /*輸入盒內字型調整*/
     .ui.input > input {
         font-family: 'Oswald','Noto Sans TC', sans-serif;
     }
-    /*��予�摰寧��������(���)*/
+   /*聊天內容的每收到的一個訊息(列)*/
     .chatTextItem_self{
     	width:279px;
     	float:right;
     	margin-bottom:3px;
     }
-    /*��予�摰寧��������(����)*/
+    /*聊天內容的每收到的一個訊息(文字)*/
     .chatTextItem_self > span> span{
     	background-color:RGB(250, 110, 122);
     	width:auto;
     	max-width:140px;
-    	/*��span�銵����隞仿��lock頧������*/
+    	/*因為span是行內元素所以透過block轉成塊級元素*/
     	display:block; 
     	float: right;
-    	border-radius: 5px 0px 5px 5px; /*撌艾��銝�椰銝�*/
+    	border-radius: 5px 0px 5px 5px;  /*左、右、右下、左下*/
     	padding: 5px;
     	word-wrap:break-word;
 		word-break:break-all;
@@ -143,9 +143,9 @@
     	background-color:#f1f0f0;
     	width:auto;
     	max-width:140px;
-    	/*��span�銵����隞仿��lock頧������*/
+    	/*因為span是行內元素所以透過block轉成塊級元素*/
     	display:block; 
-    	border-radius: 5px 0px 5px 5px; /*撌艾��銝�椰銝�*/
+    	border-radius: 5px 0px 5px 5px; /*左、右、右下、左下*/
     	padding: 5px;
     	float:left;
     	word-wrap:break-word;
@@ -164,11 +164,11 @@
     .chatTextItem > span + .tooltip.right{
     	margin-top:10px;
     	margin-left:170px;
-    	white-space:nowrap; /*蝛箇����*/
+    	white-space:nowrap; /*空白處理*/
 
     }
     
-    /*�����予撠店����������*/
+     /*參與某聊天對話的名單的每一列*/
     #chatRoomJoin_Modal .item{
     	margin-top:10px;
     	margin-bottom:10px;
@@ -176,29 +176,29 @@
     	width:100%;
     }
     
-    /*���憭犖嚗閰脫��歇���予撠店����isable checkbox��霈�*/
+   /*加入更多人，若該朋友已在聊天對話時，將disable checkbox及改變顏色*/
     input[type="checkbox"][disabled]+label,
     input[type="checkbox"][disabled]+label:hover{
     	color:LightGrey;
     	cursor:not-allowed;
     }
     
-     /*憿舐內��銝������*/
+     /*顯示是否上線的狀態*/
     .online_status{
     	float: right;
     }
     
-    /*������店嚗＊蝷箇��內*/
+    /*若有上線的話，顯示的圖示*/
     .fas.fa-circle{
 	    color: #42B72A;
 	    font-size: 10px;
     }
-
+	/*創建群組及加入更多人的標題顏色*/
     #chatRoomJoin_Modal h4,
 	#chat_AddFri_Modal h4 {
 		color:rgb(51, 51, 51);
 	}
-    
+    /*加入更多人的checkbox那一列*/
     #chat_AddFri_Modal .modal-body .item{
     	border: 0px;
     	width:100%;

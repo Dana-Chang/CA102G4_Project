@@ -36,6 +36,15 @@
  	pageContext.setAttribute("list_tag", list_tag);
 	
 %>
+<%
+	//取得購物車商品數量
+	Object total_items_temp = session.getAttribute("total_items");
+	int total_items = 0;
+	if(total_items_temp != null ){
+		total_items= (Integer) total_items_temp;
+	}
+	pageContext.setAttribute("total_items",total_items);
+%>
 <jsp:useBean id="Photo_wallService" scope="page" class="com.photo_wall.model.Photo_wallService" />
 <jsp:useBean id="Photo_tagService" scope="page" class="com.photo_tag.model.Photo_tagService" />
 
@@ -129,9 +138,8 @@
                          </li>
                          
                         <li style="<%= logout %>"><a class="top_banner" href="<%=request.getContextPath()%>/front_end/personal_area_home.html"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                        
-                        <li><a class="top_banner" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-                        <li><a class="top_banner" href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                        <li><a class="top_banner" href="<%=request.getContextPath()%>/front_end/store/store_cart.jsp"><i class="fa fa-shopping-cart shopping-cart" aria-hidden="true"></i><span class="badge">${total_items}</span></a></li>
+						<li><a class="top_banner" href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
                     </ul>
                 </div>
                 <div class="clearfix"> </div>

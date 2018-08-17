@@ -118,6 +118,50 @@ public class ChatRoomServlet extends HttpServlet {
 
 		}
 		
+		//********新增與賣家的聊天**********//
+		if("addNewCR_seller".equals(action)) {
+			
+			res.setContentType("text/plain;charset=UTF-8");
+			PrintWriter out = res.getWriter();
+			
+			try {
+				//登入者ID
+				String login_MemId = req.getParameter("meId");
+				//賣家ID
+				String seller_MemId = req.getParameter("sellerId");
+				if(login_MemId == null || login_MemId.trim().length() == 0) {
+					out.println("錯誤：未取到登入者的會員ID。");
+					return;
+				}
+				
+				if(seller_MemId == null || seller_MemId.trim().length() == 0) {
+					out.println("錯誤：未取到好友的會員ID。");
+					return;
+				}
+
+				/***************************第二步錯誤處理完畢，準備新增新的聊天對話****************/
+				ChatRoomService crSvc = new ChatRoomService();
+				MemberService memSvc = new MemberService();
+				String sellerName = memSvc.findByPrimaryKey(seller_MemId).getMem_Name();
+				String loginName = memSvc.findByPrimaryKey(login_MemId).getMem_Name();
+				String crName = "聊聊:"+sellerName+"vs"+loginName;
+				//先新增聊天對話及參與名單，拿到回傳的主鍵
+				String pkey = crSvc.addChatRoom(crName,"",new String[] {seller_MemId},login_MemId,666);
+				
+				System.out.println("新增成功:與賣家的聊天"+pkey);
+				/***************************第三步返回相關資訊****************/
+				//openChatRoom(chatRoom_id,chatRoom_Name,cnt)
+				out.println("{\"CRID\":\""+pkey+"\",\"crName\":\""+crName+"\",\"cnt\":\"666\"}");
+
+			}catch(Exception e) {
+				out.print("錯誤：發生Exception。");
+			}
+			
+		}
+		
+		
+		
+		
 		//確認OneByOne聊天對話是否存在?已存在時，回傳聊天編號、聊天對話名稱/不存在時，先新增在回傳
 		if("checkOnebyOneCR".equals(action)) {
 			res.setContentType("text/plain;charset=UTF-8");
