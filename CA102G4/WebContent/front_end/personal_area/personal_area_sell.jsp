@@ -493,8 +493,8 @@
                    <div style="width: 70%;float: left">
                        <ul class="nav nav-tabs" id="sell_tab">
                           <li class="active"><a data-toggle="tab" href="#store_mgt">賣場管理</a></li>
-                          <li><a data-toggle="tab" href="#orderlist_sell">銷售清單</a></li>
-                          <li><a data-toggle="tab" href="#rating_sell">銷售評價</a></li>
+                          <li><a href="<%=request.getContextPath()%>/front_end/personal_area/personal_area_sell_PSIList.jsp">銷售清單</a></li>
+                          <li><a href="<%=request.getContextPath()%>/front_end/personal_area/personal_area_sell_ratingList.jsp">銷售評價</a></li>
                         </ul>
                    </div>
                 </div>
@@ -624,21 +624,21 @@
 							<div class="col-md-10 col-lg-10"  style="padding-top:20px;padding-bottom: 100px;">
 								<div class="tabbable-panel">
 									<div class="tabbable-line">
-									<ul class="nav nav-tabs ">
+										<ul class="nav nav-tabs ">
 											<li class="active">
-												<a href="#tab_1" data-toggle="tab">
+												<a href="<%=request.getContextPath()%>/front_end/personal_area/personal_area_sell_PSIList.jsp">
 													待出貨 </a>
 											</li>
 											<li>
-												<a href="#tab_2" data-toggle="tab">
+												<a href="<%=request.getContextPath()%>/front_end/personal_area/personal_area_sell_PRList.jsp">
 													待收貨 </a>
 											</li>
 											<li>
-												<a href="#tab_3" data-toggle="tab">
+												<a href="<%=request.getContextPath()%>/front_end/personal_area/personal_area_sell_COMList.jsp">
 													完成 </a>
 											</li>
 											<li>
-												<a href="#tab_4" data-toggle="tab">
+												<a href="<%=request.getContextPath()%>/front_end/personal_area/personal_area_sell_CLList.jsp">
 													取消</a>
 											</li>
 										</ul>
